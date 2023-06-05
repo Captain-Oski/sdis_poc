@@ -1,0 +1,10 @@
+*.log
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+.env
+*.recover
+*.log
+*.zip

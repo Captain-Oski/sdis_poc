@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>View local GeoJSON</title>
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+	<script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+	<link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		#map {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 100%;
+		}
+	</style>
+</head>
+
+<body>
+	<style>
+		#file {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+	<div id="map"></div>
+	<input type="file" id="file" name="file" accept="application/geo+json,application/vnd.geo+json,.geojson,application/json" />
+	<script>
+		
+		var map = new maplibregl.Map({
+			container: 'map',
+			style:
+			{
+				'version': 8,
+				'glyphs': "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
+				'sources': {
+					'raster-tiles': {
+						'type': 'raster',
+						'tiles': [
+							'http://stamen-tiles-d.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png'
+						],
+						'tileSize': 256,
+						'attribution':
+							'Map tiles by <a target="_top" rel="noopener" href="http://stamen.com">Stamen Design</a>, under <a target="_top" rel="noopener" href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>, under <a target="_top" rel="noopener" href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>'
+					}
+				}
+				, 'layers': [
+					{
+						'id': 'simple-tiles',
+						'type': 'raster',
+						'source': 'raster-tiles',
+						'minzoom': 0,
+						'maxzoom': 22
+					}]
+			},
+			center: [-73.55392401446137, 45.50245825854543],
+			zoom: 10.5,
+			antialias: true
+		});
+
+        map.on('load', (e) => {
+            
+            map.addSource('h3-source_200', {
+                'type': 'vector',
+                'tiles': ['http://localhost:8801/sdis.indice_emv_hex_200m_acp_avg/{z}/{x}/{y}.pbf']
+            });
+
+            map.addLayer({
+                'id': 'h3_200',
+                'type': 'fill',
+                'source': 'h3-source_200',
+                'source-layer': 'sdis.indice_emv_hex_200m_acp_avg',
+                'paint': {
+                    'fill-color': {
+                        'property': 'acp_scl',
+                        'stops': [[-0.60842997, '#009B9E'], [3.0420635, '#C75DAB']]
+                        // 'stops': [[-0.9151, '#009B9E'], [-0.0704, '#42B7B9'], [0.7773, '#A7D3D4'], [1.8236, '#E4C1D9'], [4.1329, '#D691C1']]
+                    },
+                    'fill-opacity': 0.66,
+
+                    // #009B9E,#42B7B9,#A7D3D4,#F1F1F1,#E4C1D9,#D691C1,#C75DAB
+                },
+                minzoom: 13,
+
+            });
+
+            map.addSource('h3-source_400', {
+                'type': 'vector',
+                'tiles': ['http://localhost:8801/sdis.indice_emv_hex_400m_acp_avg/{z}/{x}/{y}.pbf']
+            });
+
+            map.addLayer({
+                'id': 'h3_400',
+                'type': 'fill',
+                'source': 'h3-source_400',
+                'source-layer': 'sdis.indice_emv_hex_400m_acp_avg',
+                'paint': {
+                    'fill-color': {
+                        'property': 'acp_scl',
+                        'stops': [[-2.1030998, '#009B9E'], [2.9797132, '#C75DAB']]
+                        // 'stops': [[-0.9151, '#009B9E'], [-0.0704, '#42B7B9'], [0.7773, '#A7D3D4'], [1.8236, '#E4C1D9'], [4.1329, '#D691C1']]
+                    },
+                    'fill-opacity': 0.66,
+                },
+                minzoom: 11,
+                maxzoom: 13,
+            });
+
+            map.addSource('h3-source_800', {
+                'type': 'vector',
+                'tiles': ['http://localhost:8801/sdis.indice_emv_hex_800m_acp_avg/{z}/{x}/{y}.pbf']
+            });
+
+            map.addLayer({
+                'id': 'h3_800',
+                'type': 'fill',
+                'source': 'h3-source_800',
+                'source-layer': 'sdis.indice_emv_hex_800m_acp_avg',
+                'paint': {
+                    'fill-color': {
+                        'property': 'acp_scl',
+                        'stops': [[-1.8012564, '#009B9E'], [2.6153345, '#C75DAB']]
+                        // 'stops': [[-0.9151, '#009B9E'], [-0.0704, '#42B7B9'], [0.7773, '#A7D3D4'], [1.8236, '#E4C1D9'], [4.1329, '#D691C1']]
+                    },
+                    'fill-opacity': 0.66,
+                    // #009B9E,#42B7B9,#A7D3D4,#F1F1F1,#E4C1D9,#D691C1,#C75DAB
+                },
+                maxzoom: 11,
+            });
+
+			})
+                   
+	</script>
+
+</body>
+
+</html>
