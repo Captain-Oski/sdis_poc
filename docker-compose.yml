@@ -7,7 +7,7 @@ services:
     environment: 
     - POSTGRES_PASSWORD=password
     volumes:
-    - ./0 - create_postgres_stack.sql:/docker-entrypoint-initdb.d/create_postgres_stack.sql
+    - ./create_postgres_stack.sql:/docker-entrypoint-initdb.d/create_postgres_stack.sql
     - pgdata:/var/lib/postgresql/data
     restart: always
   pg_tileserv:
