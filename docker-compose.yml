@@ -7,7 +7,7 @@ services:
     environment: 
     - POSTGRES_PASSWORD=password
     volumes:
-    - ./create_postgres_stack.sql:/docker-entrypoint-initdb.d/create_postgres_stack.sql
+    - ./etl/0-create_postgres_stack.sql:/docker-entrypoint-initdb.d/0-create_postgres_stack.sql
     - pgdata:/var/lib/postgresql/data
     restart: always
   pg_tileserv:
@@ -33,10 +33,11 @@ services:
     ports:
       - 8000:80
     volumes:
-      - ./:/usr/share/nginx/html
+      - ./app/:/usr/share/nginx/html
   ogr:
     image: ghcr.io/osgeo/gdal:alpine-small-latest
     volumes:
       - ./data:/data
+      - ./etl:/etl
 volumes:
   pgdata:
