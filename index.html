@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>View local GeoJSON</title>
+	<title>SDIS - POC</title>
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 	<script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
 	<link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
@@ -31,7 +31,6 @@
 		}
 	</style>
 	<div id="map"></div>
-	<input type="file" id="file" name="file" accept="application/geo+json,application/vnd.geo+json,.geojson,application/json" />
 	<script>
 		
 		var map = new maplibregl.Map({
@@ -64,7 +63,7 @@
 
                     // #009B9E,#42B7B9,#A7D3D4,#F1F1F1,#E4C1D9,#D691C1,#C75DAB
                 },
-                minzoom: 13,
+                minzoom: 12,
 
             });
 
@@ -86,8 +85,8 @@
                     },
                     'fill-opacity': 0.66,
                 },
-                minzoom: 11,
-                maxzoom: 13,
+                minzoom: 10,
+                maxzoom: 12,
             });
 
             map.addSource('h3-source_800', {
@@ -109,7 +108,7 @@
                     'fill-opacity': 0.66,
                     // #009B9E,#42B7B9,#A7D3D4,#F1F1F1,#E4C1D9,#D691C1,#C75DAB
                 },
-                maxzoom: 11,
+                maxzoom: 10,
             });
 
 			})
