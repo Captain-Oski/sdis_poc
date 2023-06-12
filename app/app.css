@@ -5,7 +5,22 @@ body {
 
 #map {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
+    top: 4.5%;
+    height: -webkit-fill-available;
+    width: 75%;
+    right: 0;
+}
+
+#menu {
+    position: absolute;
+    top: 4.5%;
+    left: 0;
+    width: 25%;
+}
+
+
+#boite {
+    margin: 10px;
+    padding: 20px;
+    background: ligthgrey;
 }
