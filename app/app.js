@@ -7,22 +7,9 @@ var map = new maplibregl.Map({
 });
 const myLayers = ['h3_100', 'h3_200', 'h3_400', 'h3_800', 'h3_1000']
 
+
+
 map.on('load', (e) => {
-
-
-
-    // const distances = [
-    //     {distance:100, minzoom: null, maxzoom:null},
-    //     {distance:200, minzoom: null, maxzoom:null},
-    //     {distance:300, minzoom: null, maxzoom:null},
-    //     {distance:400, minzoom: null, maxzoom:null},
-    //     {distance:500, minzoom: null, maxzoom:null}    
-    // ]
-
-
-    // for (distance in distances) {
-
-    // }
 
     map.addSource('h3-source_100', {
         'type': 'vector',
@@ -143,67 +130,39 @@ map.on('load', (e) => {
     
     // map.addControl(new MaplibreLegendControl({}), "bottom-left");
 
+    myLayers.forEach( layer => {
+        map.on('click', layer, function (e) {
+            var coordinates = e.lngLat;
+            var description 
+            console.log(e.features[0])
+            for (item in e.features[0].properties) {
+                description += `<h5>${Object.keys(item)}:${Object.values(item)}<h5/>`
+            }
+             
+            // Ensure that if the map is zoomed out such that multiple
+            // copies of the feature are visible, the popup appears
+            // over the copy being pointed to.
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+             
+            new maplibregl.Popup()
+            .setLngLat(coordinates)
+            .setHTML(description)
+            .addTo(map);
+            });
+             
+            // Change the cursor to a pointer when the mouse is over the places layer.
+            map.on('mouseenter', layer, function () {
+            map.getCanvas().style.cursor = 'pointer';
+            });
+    
+         
+            // Change it back to a pointer when it leaves.
+            map.on('mouseleave',layer, function () {
+            map.getCanvas().style.cursor = '';
+            });
+    })
 })
 
 
-
-// Cette fonction supprime toutes les couches et sources de la carte
-function removeAllLayersAndSources() {
-    var allSources = map.getStyle().sources;
-
-    // Supprimer chaque couche
-    myLayers.forEach(function (layerName) {
-        if (map.getLayer(layerName)) {
-            map.removeLayer(layerName);
-        }
-    })
-
-    // Supprimer chaque source
-    myLayers.forEach(function (layerName) {
-        if (allSources.hasOwnProperty(`${layerName}-source`)) {
-            map.removeSource(`${layerName}-source`);
-        }
-    });
-}
-
-// Cette fonction charge une couche de points aléatoires sur la carte
-function loadRandomPointsLayer() {
-    // Supprimer toutes les couches et sources de la carte
-    removeAllLayersAndSources()
-
-    map.addSource('pip_source', {
-        'type': 'vector',
-        'tiles': ['https://captain-oski-verbose-space-guacamole-57gr6w464427vq5-8801.preview.app.github.dev/sdis.indice_emv_pip/{z}/{x}/{y}.pbf']
-    });
-
-    map.addLayer({
-        'id': 'pip',
-        'type': 'circle',
-        'source': 'pip_source',
-        'source-layer': 'sdis.indice_emv_pip',
-        'paint': {
-            'circle-color': {
-                'property': 'acp_scl',
-                'stops': [[-2.2, '#009392'], [4.15, '#cf597e']],
-                // 'stops': [[-0.9151, '#009B9E'], [-0.0704, '#42B7B9'], [0.7773, '#A7D3D4'], [1.8236, '#E4C1D9'], [4.1329, '#D691C1']]
-            },
-            'circle-opacity': 0.66,
-            'circle-radius': {
-                'base': 0.3,
-                'stops': [
-                [12, 0.5],
-                [14, 0.7],
-                [18, 4]
-                ]
-                },
-            // #009392,#39b185,#9ccb86,#e9e29c,#eeb479,#e88471,#cf597e 
-        }
-    });
-}
-
-
-// Ajouter un événement de clic sur le bouton "loadLayer" 
-// pour charger la couche de points aléatoires
-document
-    .getElementById('loadLayer')
-    .addEventListener('click', loadRandomPointsLayer);
