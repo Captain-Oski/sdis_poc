@@ -133,15 +133,15 @@ map.on('load', (e) => {
     myLayers.forEach( layer => {
         map.on('click', layer, function (e) {
             var coordinates = e.lngLat;
-            var description 
-            console.log(e.features[0])
-            for (item in e.features[0].properties) {
-                description += `<h5>${Object.keys(item)}:${Object.values(item)}<h5/>`
-            }
-             
-            // Ensure that if the map is zoomed out such that multiple
-            // copies of the feature are visible, the popup appears
-            // over the copy being pointed to.
+            var description = `
+            <h5>${e.features[0].properties.arr_vll}<h5/>
+            <h5>ACP CSL:${Math.round(e.features[0].properties.acp_scl * 100) / 100}<h5/>
+            <h5>ACP CSL:${Math.round(e.features[0].properties.acp_ecn * 100) / 100}<h5/>
+            <h5>ACP CSL:${Math.round(e.features[0].properties.acp_nvr * 100) / 100}<h5/>
+            <h5>ACP CSL:${Math.round(e.features[0].properties.acp_scr * 100) / 100}<h5/>
+            <h5>ACP CSL:${Math.round(e.features[0].properties.acp_prx * 100) / 100}<h5/>
+            <h5>ACP CSL:${Math.round(e.features[0].properties.acp_csl * 100) / 100}<h5/>
+            `
             while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
             }

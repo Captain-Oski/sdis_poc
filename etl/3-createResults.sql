@@ -1,5 +1,5 @@
 ------------------------------------------------------------------
-------------------------REFERENCE 200m----------------------------
+------------------------REFERENCE 100m----------------------------
 ------------------------------------------------------------------
 
 create table sdis.indice_emv_hex_100m_acp_avg as select 
@@ -9,12 +9,11 @@ AVG(acp_nvr)::real as acp_nvr,
 AVG(acp_scr)::real as acp_scr, 
 AVG(acp_prx)::real as acp_prx,
 AVG(acp_csl)::real as acp_csl,
-sdis.indice_emv_pip.adidu,
 sdis.indice_emv_pip.arr_vll,
 sdis.indice_emv_hex_100m.geom
 FROM sdis.indice_emv_hex_100m
 LEFT JOIN sdis.indice_emv_pip ON st_intersects(sdis.indice_emv_hex_100m.geom,sdis.indice_emv_pip.geom)
-GROUP BY sdis.indice_emv_hex_100m.geom;
+GROUP BY sdis.indice_emv_hex_100m.geom, arr_vll,sdis.indice_emv_pip.arr_vll;
 
 ALTER TABLE sdis.indice_emv_hex_100m_acp_avg
   ALTER COLUMN geom TYPE geometry(POLYGON, 3857)
@@ -34,12 +33,11 @@ AVG(acp_nvr)::real as acp_nvr,
 AVG(acp_scr)::real as acp_scr, 
 AVG(acp_prx)::real as acp_prx,
 AVG(acp_csl)::real as acp_csl,
-sdis.indice_emv_pip.adidu,
 sdis.indice_emv_pip.arr_vll,
 sdis.indice_emv_hex_200m.geom
 FROM sdis.indice_emv_hex_200m
 LEFT JOIN sdis.indice_emv_pip ON st_intersects(sdis.indice_emv_hex_200m.geom,sdis.indice_emv_pip.geom)
-GROUP BY sdis.indice_emv_hex_200m.geom;
+GROUP BY sdis.indice_emv_hex_200m.geom,sdis.indice_emv_pip.arr_vll;
 
 ALTER TABLE sdis.indice_emv_hex_200m_acp_avg
   ALTER COLUMN geom TYPE geometry(POLYGON, 3857)
@@ -59,12 +57,11 @@ AVG(acp_nvr)::real as acp_nvr,
 AVG(acp_scr)::real as acp_scr, 
 AVG(acp_prx)::real as acp_prx,
 AVG(acp_csl)::real as acp_csl,
-sdis.indice_emv_pip.adidu,
 sdis.indice_emv_pip.arr_vll,
 sdis.indice_emv_hex_400m.geom
 FROM sdis.indice_emv_hex_400m
 LEFT JOIN sdis.indice_emv_pip ON st_intersects(sdis.indice_emv_hex_400m.geom,sdis.indice_emv_pip.geom)
-GROUP BY sdis.indice_emv_hex_400m.geom;
+GROUP BY sdis.indice_emv_hex_400m.geom,sdis.indice_emv_pip.arr_vll;
 
 ALTER TABLE sdis.indice_emv_hex_400m_acp_avg
   ALTER COLUMN geom TYPE geometry(POLYGON, 3857)
@@ -83,12 +80,11 @@ AVG(acp_nvr)::real as acp_nvr,
 AVG(acp_scr)::real as acp_scr, 
 AVG(acp_prx)::real as acp_prx,
 AVG(acp_csl)::real as acp_csl,
-sdis.indice_emv_pip.adidu,
 sdis.indice_emv_pip.arr_vll,
 sdis.indice_emv_hex_800m.geom
 FROM sdis.indice_emv_hex_800m
 LEFT JOIN sdis.indice_emv_pip ON st_intersects(sdis.indice_emv_hex_800m.geom,sdis.indice_emv_pip.geom)
-GROUP BY sdis.indice_emv_hex_800m.geom;
+GROUP BY sdis.indice_emv_hex_800m.geom,sdis.indice_emv_pip.arr_vll;
 
 ALTER TABLE sdis.indice_emv_hex_800m_acp_avg
   ALTER COLUMN geom TYPE geometry(POLYGON, 3857)
@@ -107,12 +103,11 @@ AVG(acp_nvr)::real as acp_nvr,
 AVG(acp_scr)::real as acp_scr,
 AVG(acp_prx)::real as acp_prx,
 AVG(acp_csl)::real as acp_csl,
--- sdis.indice_emv_pip.adidu,
--- sdis.indice_emv_pip.arr_vll,
+sdis.indice_emv_pip.arr_vll,
 sdis.indice_emv_hex_1000m.geom
 FROM sdis.indice_emv_hex_1000m
 LEFT JOIN sdis.indice_emv_pip ON st_intersects(sdis.indice_emv_hex_1000m.geom,sdis.indice_emv_pip.geom)
-GROUP BY sdis.indice_emv_hex_1000m.geom;
+GROUP BY sdis.indice_emv_hex_1000m.geom,sdis.indice_emv_pip.arr_vll;
 
 ALTER TABLE sdis.indice_emv_hex_1000m_acp_avg
   ALTER COLUMN geom TYPE geometry(POLYGON, 3857)

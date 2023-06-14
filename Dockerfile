@@ -1,7 +1,7 @@
 # WORK IN PROGRESS
 
 # Need to find the good image to run with
-FROM postgis:latest
+FROM R:latest
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     postgresql-$PG_MAJOR-postgis-$POSTGIS_MAJOR \
