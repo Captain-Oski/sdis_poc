@@ -10,7 +10,19 @@ const myLayers = ['h3_100', 'h3_200', 'h3_400', 'h3_800', 'h3_1000']
 
 
 map.on('load', (e) => {
+    map.addSource('arr-source', {
+        'type': 'geojson',
+        'data': 'https://montreal-prod.storage.googleapis.com/resources/e9b0f927-8f75-458c-8fda-b5da65cc8b73/limadmin.geojson?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=test-datapusher-delete%40amplus-data.iam.gserviceaccount.com%2F20230614%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20230614T201209Z&X-Goog-Expires=604800&X-Goog-SignedHeaders=host&x-goog-signature=5da1f49edb284fa79cf7eaef478a827342daef8a7e28073fd776efbfdc0045fe52c4afdc7cba7a5b4a91ea4273d822d50c81ba57f29c92825f5f9e3352f3169b4e6ab01253fa26c618d637ccdde5125b7c6419a28dd2c9a3a0739aea56262ed6a40212146feb76ef9d69cda05c41df08f27d4caf9c030576f890d6a6357301464d198e2f7829fc0aa63938923ee221188886d7ab8dc9e477da2a28f05d5953d51160b1cd4cd0bda1b797982fd5236a4f09e7aa6a3d825327159d7a5c7008a2ee1033a61d712d25e0388dd5fff67f3aaaa4603d8795715533cb1d4d727f5622f7a0e1eef5beb33821f7006f0f2a9ccb94aee0c1aa9fd8e66d9b08e424d0178de6'
+    });
 
+    map.addLayer({
+        'id': 'arr',
+        'type': 'fill',
+        'source': 'arr-source',
+        'paint': {
+            'fill-color': 'red'
+            }
+    });
     map.addSource('h3-source_100', {
         'type': 'vector',
         'tiles': ['https://captain-oski-verbose-space-guacamole-57gr6w464427vq5-8801.preview.app.github.dev/sdis.indice_emv_hex_100m_acp_avg/{z}/{x}/{y}.pbf']
@@ -126,8 +138,7 @@ map.on('load', (e) => {
         },
         maxzoom: 8,
     });
-
-    
+   
     // map.addControl(new MaplibreLegendControl({}), "bottom-left");
 
     myLayers.forEach( layer => {
