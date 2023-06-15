@@ -13,8 +13,8 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">SDIS - POC</a>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top ">
+    <a class="navbar-brand " href="#" style="margin-left: 1rem;">Indices d'équité des milieux de vie - 2023   </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
       aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -23,10 +23,10 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="./index.html">Accueil</a>
+          <a class="nav-link" href="./index.html">H3</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./dotdensity.html">Dot density</a>
+          <a class="nav-link" href="./dotdensity.html">Densité de points</a>
         </li>
       </ul>
     </div>
@@ -38,34 +38,264 @@
 
     <div id="menu">
       <div id="boite">
-      <div class="h4 mb-3">Indices d'équité des milieux de vie - 2023</div>  
+      <div class="h4 mb-3">Indices</div>  
       <div class="form-check form-switch">
         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked>
         <label class="form-check-label" for="flexSwitchCheckDefault">Culture, Sports et Loisirs</label>
       </div>
       <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedt" checked>
         <label class="form-check-label" for="flexSwitchCheckChecked">Ressources de proximité</label>
       </div>
       <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDisabled" checked >
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDisabledt" checked>
         <label class="form-check-label" for="flexSwitchCheckDisabled">Sécurité Urbaine</label>
       </div>
       <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabled" checked >
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabledt" checked>
         <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Environnemental</label>
       </div>
       <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabled" checked >
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabledt" checked>
         <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Économique</label>
       </div>
       <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabled" checked >
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabledt" checked>
         <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Social</label>
       </div>
       </div>
       <div id="boite">
         <div class="h4 mb-3">Filtrer par arrondissement</div>  
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked" >
+            Tous les arrondissements
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Ahuntsic-Cartierville
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Anjou
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            
+            Côte-des-Neiges–Notre-Dame-de-Grâce
+           
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Lachine
+            
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            LaSalle
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Le Plateau-Mont-Royal
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Le Sud-Ouest
+             
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            L'Île-Bizard–Sainte-Geneviève
+            
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Mercier–Hochelaga-Maisonneuve
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Montréal-Nord  
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Outremont
+            
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Pierrefonds-Roxboro
+           
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Rivière-des-Prairies–Pointe-aux-Trembles
+           
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Rosemont–La Petite-Patrie
+           
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Saint-Laurent
+           
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Saint-Léonard
+            
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Verdun
+           
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Ville-Marie
+            
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Villeray–Saint-Michel–Parc-Extension
+            
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Baie-D'Urfé   
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Beaconsfield
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Côte-Saint-Luc 
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Dollard-Des Ormeaux 
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Dorval                 
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Hampstead          
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            L'Île-Dorval      
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Kirkland                   
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Montréal-Est
+  
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Montréal-Ouest
+
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Mont-Royal
+
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
+          <label class="form-check-label" for="flexCheckChecked">
+            Pointe-Claire
+
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
+          <label class="form-check-label" for="flexCheckChecked">
+            Sainte-Anne-de-Bellevue
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
+          <label class="form-check-label" for="flexCheckChecked">
+            Senneville
+
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
+          <label class="form-check-label" for="flexCheckChecked">
+            Westmount
+          </label>
+        </div>
+
       </div>
     </div>
 
@@ -82,6 +312,7 @@
 <!-- ================================================== -->
 
 <script type='text/javascript' src="./app.js"></script>
+<script type='text/javascript' src="./filter.js"></script>
 </body>
 
 </html>

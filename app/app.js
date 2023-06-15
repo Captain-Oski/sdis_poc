@@ -6,7 +6,41 @@ var map = new maplibregl.Map({
     antialias: true
 });
 const myLayers = ['h3_100', 'h3_200', 'h3_400', 'h3_800', 'h3_1000']
-
+const arrondissements = [
+    'Ahuntsic-Cartierville',
+    'Anjou',
+    'Côte-des-Neiges–Notre-Dame-de-Grâce',
+    'Lachine',
+    'LaSalle',
+    'Le Plateau-Mont-Royal',
+    'Le Sud-Ouest',
+    "L'Île-Bizard–Sainte-Geneviève",
+    'Mercier–Hochelaga-Maisonneuve',
+    'Montréal-Nord',
+    'Outremont',
+   'Pierrefonds-Roxboro',
+    'Rivière-des-Prairies–Pointe-aux-Trembles',
+    'Rosemont–La Petite-Patrie',
+   'Saint-Laurent',
+   'Saint-Léonard',
+   'Verdun',
+   'Ville-Marie',
+   'Villeray–Saint-Michel–Parc-Extension',
+   "Baie-D'Urfé",
+    'Beaconsfield',
+    'Côte-Saint-Luc',
+    'Dollard-Des Ormeaux',
+    'Dorval',
+    'Hampstead',
+    "L'Île-Dorval",
+    'Kirkland',
+    'Montréal-Est',
+    'Montréal-Ouest',
+    'Mont-Royal',
+    'Pointe-Claire',
+    'Sainte-Anne-de-Bellevue',
+    'Senneville',
+    'Westmount']
 
 
 map.on('load', (e) => {
