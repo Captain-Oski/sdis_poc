@@ -4,4 +4,8 @@
 # &&
 # sudo docker compose run --rm ogr ogrinfo PG:"dbname='sdis' host='172.18.0.3' port='5432' user='admin_geo' password='password'" -sql @./etl/2-createGridAgainstPolygons.sql \
 # &&
-sudo docker compose run --rm ogr ogrinfo PG:"dbname='sdis' host='172.18.0.3' port='5432' user='admin_geo' password='password'" -sql @./etl/3-createResults.sql
+# sudo docker compose run --rm ogr ogrinfo PG:"dbname='sdis' host='172.18.0.3' port='5432' user='admin_geo' password='password'" -sql @./etl/3-createResults.sql \
+# &&
+sudo docker compose run --rm ogr ogrinfo PG:"dbname='sdis' host='172.18.0.2' port='5432' user='admin_geo' password='password'" -sql @./etl/4-createViews.sql \
+&&
+sudo docker compose run --rm ogr ogrinfo PG:"dbname='sdis' host='172.18.0.2' port='5432' user='admin_geo' password='password'" -sql @./etl/5-index.sql

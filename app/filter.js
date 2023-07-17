@@ -2,11 +2,11 @@ function filtrerParArrondissement() {
     const t = lireLabelsCheckboxChecked()
     if (t.includes("Tous les arrondissements")) {
         myLayers.forEach((layer) => {
-          map.setFilter(layer, null);
+          map.setFilter(layer.id, null);
         })
     } else {
         myLayers.forEach((layer) => {
-          map.setFilter(layer,['in', 'arr_vll', ...t]);
+          map.setFilter(layer.id,['in', 'arr_vll', ...t]);
         })
     }
   }
