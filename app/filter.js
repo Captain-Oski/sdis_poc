@@ -25,3 +25,17 @@ function filtrerParArrondissement() {
     return labels;
   }
 
+ 
+  function toggleLayerVisibility(layerId) {
+    console.log(`test`)
+    var layer = map.getLayer(layerId);
+    if (layer) {
+      var visibility = map.getLayoutProperty(layerId, 'visibility');
+      
+      if (visibility === 'visible') {
+        map.setLayoutProperty(layerId, 'visibility', 'none');
+      } else {
+        map.setLayoutProperty(layerId, 'visibility', 'visible');
+      }
+    }
+  }

@@ -3,5 +3,4 @@ create table sdis.test as
 select b.*, a.geom
 from sdis.indice_emv a 
 left join sdis.indice_emv_data b
-ON a.adidu::int4 = b.adidu::int4
-limit 10;
+ON a.adidu::int4 = b.adidu::int4;

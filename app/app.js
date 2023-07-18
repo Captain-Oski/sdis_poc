@@ -15,7 +15,7 @@ let myLayers = [
     //     min: 0,
     //     max:0
     // },
-    {id: 'h3_800m',
+    {id: 'h3_400m',
     min: 0,
     max:0
     }
@@ -60,76 +60,66 @@ const arrondissements = [
 
 map.on('load', (e) => {
     
-    map.addSource('h3_200_source', {
+    map.addSource('hex_source', {
         'type': 'vector',
-        'tiles': ['https://captain-oski-verbose-space-guacamole-57gr6w464427vq5-8801.preview.app.github.dev/sdis.h3_200m/{z}/{x}/{y}.pbf']
+        'tiles': ['https://captain-oski-verbose-space-guacamole-57gr6w464427vq5-8801.preview.app.github.dev/sdis.indice_emv_hex_400m_result/{z}/{x}/{y}.pbf']
     });
 
     map.addLayer({
-        'id': 'h3_200',
+        'id': 'hex_data',
         'type': 'fill',
-        'source': 'h3_200_source',
-        'source-layer': 'sdis.h3_200m',
-        'paint': {
-            'fill-color': {
-                'property': 'acp_scl',
-                'stops': [[-2.1030998, '#d1eeea'], [2.9797132, '#2a5674']]
-                // 'stops': [[-0.60842997, '#009392'], [3.0420635, '#cf597e']]
-            },
-            'fill-opacity': 0.77,
-        },
-        minzoom: 12
+        'source': 'hex_source',
+        'source-layer': 'sdis.indice_emv_hex_400m_result',
+        paint: {
+            'fill-color': [
+                
+                'step',
+                ['get', 'indice_emv'],
+                '#d1eeea',
+                2,
+                '#68abb8',
+                3,
+                '#2a5674'
+                // #d1eeea,#a8dbd9,#85c4c9,#68abb8,#4f90a6,#3b738f,#2a5674                   
+        ],
+            'fill-opacity': 0.8
+          },
+          'layout': {
+            // Make the layer visible by default.
+            'visibility': 'visible'
+            }
     });
 
-    map.addSource('h3_400_source', {
+    map.addSource('da_source', {
         'type': 'vector',
-        'tiles': ['https://captain-oski-verbose-space-guacamole-57gr6w464427vq5-8801.preview.app.github.dev/sdis.h3_400m/{z}/{x}/{y}.pbf']
+        'tiles': ['https://captain-oski-verbose-space-guacamole-57gr6w464427vq5-8801.preview.app.github.dev/sdis.test/{z}/{x}/{y}.pbf']
     });
 
     map.addLayer({
-        'id': 'h3_400',
+        'id': 'da_data',
         'type': 'fill',
-        'source': 'h3_400_source',
-        'source-layer': 'sdis.h3_400m',
-        'paint': {
-            'fill-color': {
-                'property': 'acp_scl',
-                'stops': [[-2.1030998, '#d1eeea'], [2.9797132, '#2a5674']]
-                // 'stops': [[-0.9151, '#009B9E'], [-0.0704, '#42B7B9'], [0.7773, '#A7D3D4'], [1.8236, '#E4C1D9'], [4.1329, '#D691C1']]
-                // BLEU SDSI 
-                // #d1eeea,#a8dbd9,#85c4c9,#68abb8,#4f90a6,#3b738f,#2a5674
-            },
-            'fill-opacity': 0.77,
-        },
-        minzoom: 10,
-        maxzoom: 12
+        'source': 'da_source',
+        'source-layer': 'sdis.test',
+        paint: {
+            'fill-color': [
+                
+                    'step',
+                    ['get', 'indice_emv'],
+                    '#d1eeea',
+                    2,
+                    '#68abb8',
+                    3,
+                    '#2a5674'
+                    // #d1eeea,#a8dbd9,#85c4c9,#68abb8,#4f90a6,#3b738f,#2a5674                   
+            ],
+            'fill-opacity': 0.8
+          },
+          'layout': {
+            // Make the layer visible by default.
+            'visibility': 'none'
+            }
     });
-
-    map.addSource('h3_800m_source', {
-        'type': 'vector',
-        'tiles': ['https://captain-oski-verbose-space-guacamole-57gr6w464427vq5-8801.preview.app.github.dev/sdis.h3_800m/{z}/{x}/{y}.pbf']
-    });
-
-    map.addLayer({
-        'id': 'h3_800m',
-        'type': 'fill',
-        'source': 'h3_800m_source',
-        'source-layer': 'sdis.h3_800m',
-        'paint': {
-            'fill-color': {
-                'property': 'acp_scl',
-                'stops': [[-1.8012564, '#d1eeea'], [2.6153345, '#2a5674']]
-                // 'stops': [[-0.9151, '#009B9E'], [-0.0704, '#42B7B9'], [0.7773, '#A7D3D4'], [1.8236, '#E4C1D9'], [4.1329, '#D691C1']]
-            },
-            'fill-opacity': 0.77,
-            // #009B9E,#42B7B9,#A7D3D4,#F1F1F1,#E4C1D9,#D691C1,#C75DAB
-            // BLEU SDSI 
-            // #d1eeea,#a8dbd9,#85c4c9,#68abb8,#4f90a6,#3b738f,#2a5674
-        },
-        minzoom: 8,
-        maxzoom: 10
-    });
-
+    
     map.addSource('arr-source', {
         'type': 'geojson',
         'data': 'https://donnees.montreal.ca/dataset/9797a946-9da8-41ec-8815-f6b276dec7e9/resource/e18bfd07-edc8-4ce8-8a5a-3b617662a794/download/limites-administratives-agglomeration.geojson'
@@ -180,8 +170,10 @@ map.on('load', (e) => {
     //         });
     // })
 
-    // minMaxForStyle('acp_csl')
  
 })
 
 
+map.on('idle', function() {
+    calculateSumAndPercentage('hex_data', 'indice_emv')
+  });

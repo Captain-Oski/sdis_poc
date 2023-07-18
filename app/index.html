@@ -38,6 +38,17 @@
 
     <div id="menu">
       <div id="boite">
+        <div class="h4 mb-3">Indices</div>  
+          <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="switchDA" onchange="toggleLayerVisibility('da_data')">
+          <label class="form-check-label" for="switchDA">DA</label>
+        </div>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="switchHEX" checked onchange="toggleLayerVisibility('hex_data')">
+          <label class="form-check-label" for="switchHEX">HEX</label>
+        </div>
+      </div>
+      <div id="boite">
       <div class="h4 mb-3">Indices</div>  
       <div class="form-check form-switch">
         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked>
@@ -313,7 +324,7 @@
 
 <script type='text/javascript' src="./app.js"></script>
 <script type='text/javascript' src="./filter.js"></script>
-<script type='text/javascript' src="./minMaxComputing.js"></script>
+<script type='text/javascript' src="./kpi.js"></script>
 </body>
 
 </html>
