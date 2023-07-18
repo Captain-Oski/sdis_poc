@@ -60,51 +60,50 @@ const arrondissements = [
 
 map.on('load', (e) => {
     
+    map.addSource('h3_200_source', {
+        'type': 'vector',
+        'tiles': ['https://captain-oski-verbose-space-guacamole-57gr6w464427vq5-8801.preview.app.github.dev/sdis.h3_200m/{z}/{x}/{y}.pbf']
+    });
 
+    map.addLayer({
+        'id': 'h3_200',
+        'type': 'fill',
+        'source': 'h3_200_source',
+        'source-layer': 'sdis.h3_200m',
+        'paint': {
+            'fill-color': {
+                'property': 'acp_scl',
+                'stops': [[-2.1030998, '#d1eeea'], [2.9797132, '#2a5674']]
+                // 'stops': [[-0.60842997, '#009392'], [3.0420635, '#cf597e']]
+            },
+            'fill-opacity': 0.77,
+        },
+        minzoom: 12
+    });
 
+    map.addSource('h3_400_source', {
+        'type': 'vector',
+        'tiles': ['https://captain-oski-verbose-space-guacamole-57gr6w464427vq5-8801.preview.app.github.dev/sdis.h3_400m/{z}/{x}/{y}.pbf']
+    });
 
-    // map.addSource('h3_200_source', {
-    //     'type': 'vector',
-    //     'tiles': ['https://captain-oski-verbose-space-guacamole-57gr6w464427vq5-8801.preview.app.github.dev/sdis.h3_200/{z}/{x}/{y}.pbf']
-    // });
-
-    // map.addLayer({
-    //     'id': 'h3_200',
-    //     'type': 'fill',
-    //     'source': 'h3_200_source',
-    //     'source-layer': 'sdis.h3_200',
-    //     'paint': {
-    //         'fill-color': {
-    //             'property': 'acp_scl',
-    //             'stops': [[-0.60842997, '#009392'], [3.0420635, '#cf597e']]
-    //         },
-    //         'fill-opacity': 0.66,
-    //     },
-    //     minzoom: 12,
-    //     maxzoom: 14
-    // });
-
-    // map.addSource('h3_400_source', {
-    //     'type': 'vector',
-    //     'tiles': ['https://captain-oski-verbose-space-guacamole-57gr6w464427vq5-8801.preview.app.github.dev/sdis.indice_emv_hex_400m_acp_avg/{z}/{x}/{y}.pbf']
-    // });
-
-    // map.addLayer({
-    //     'id': 'h3_400',
-    //     'type': 'fill',
-    //     'source': 'h3_400_source',
-    //     'source-layer': 'sdis.indice_emv_hex_400m_acp_avg',
-    //     'paint': {
-    //         'fill-color': {
-    //             'property': 'acp_scl',
-    //             'stops': [[-2.1030998, '#009392'], [2.9797132, '#cf597e']]
-    //             // 'stops': [[-0.9151, '#009B9E'], [-0.0704, '#42B7B9'], [0.7773, '#A7D3D4'], [1.8236, '#E4C1D9'], [4.1329, '#D691C1']]
-    //         },
-    //         'fill-opacity': 0.66,
-    //     },
-    //     minzoom: 10,
-    //     maxzoom: 12,
-    // });
+    map.addLayer({
+        'id': 'h3_400',
+        'type': 'fill',
+        'source': 'h3_400_source',
+        'source-layer': 'sdis.h3_400m',
+        'paint': {
+            'fill-color': {
+                'property': 'acp_scl',
+                'stops': [[-2.1030998, '#d1eeea'], [2.9797132, '#2a5674']]
+                // 'stops': [[-0.9151, '#009B9E'], [-0.0704, '#42B7B9'], [0.7773, '#A7D3D4'], [1.8236, '#E4C1D9'], [4.1329, '#D691C1']]
+                // BLEU SDSI 
+                // #d1eeea,#a8dbd9,#85c4c9,#68abb8,#4f90a6,#3b738f,#2a5674
+            },
+            'fill-opacity': 0.77,
+        },
+        minzoom: 10,
+        maxzoom: 12
+    });
 
     map.addSource('h3_800m_source', {
         'type': 'vector',
@@ -119,14 +118,16 @@ map.on('load', (e) => {
         'paint': {
             'fill-color': {
                 'property': 'acp_scl',
-                'stops': [[-1.8012564, '#009392'], [2.6153345, '#cf597e']]
+                'stops': [[-1.8012564, '#d1eeea'], [2.6153345, '#2a5674']]
                 // 'stops': [[-0.9151, '#009B9E'], [-0.0704, '#42B7B9'], [0.7773, '#A7D3D4'], [1.8236, '#E4C1D9'], [4.1329, '#D691C1']]
             },
-            'fill-opacity': 0.66,
+            'fill-opacity': 0.77,
             // #009B9E,#42B7B9,#A7D3D4,#F1F1F1,#E4C1D9,#D691C1,#C75DAB
+            // BLEU SDSI 
+            // #d1eeea,#a8dbd9,#85c4c9,#68abb8,#4f90a6,#3b738f,#2a5674
         },
-        // minzoom: 8,
-        // maxzoom: 10,
+        minzoom: 8,
+        maxzoom: 10
     });
 
     map.addSource('arr-source', {
@@ -139,8 +140,8 @@ map.on('load', (e) => {
         'type': 'line',
         'source': 'arr-source',
         "paint": {
-            "line-color": ["interpolate", ["linear"], ["zoom"], 16, "#ADB2BD", 16.6, "#0CB097"],
-            "line-width": 3,
+            "line-color": ["interpolate", ["linear"], ["zoom"], 16, "orange", 16.6, "#0CB097"],
+            "line-width": 2,
             "line-dasharray": [2, 2]
         }
     });

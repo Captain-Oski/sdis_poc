@@ -1,7 +1,7 @@
 
-DROP VIEW if exists sdis.h3_200m;
-DROP VIEW if exists sdis.h3_400m;
-DROP VIEW if exists sdis.h3_800m;
+DROP table if exists sdis.h3_200m;
+DROP table if exists sdis.h3_400m;
+DROP table if exists sdis.h3_800m;
 
 create table sdis.h3_200m as (
 with result as ( select
