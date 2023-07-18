@@ -156,28 +156,29 @@ map.on('load', (e) => {
     //         map.getCanvas().style.cursor = '';
     //         });
     // })
-
  
 })
 
 
 map.on('idle', function() {
-    pop = calculateSumAndPercentage('hex_data', 'pop2021')
+
+    pop2021 = calculateSumAndPercentage('hex_data', 'pop2021')
     acp_sociale = calculateSumAndPercentage('hex_data', 'acp_sociale')
     acp_econo = calculateSumAndPercentage('hex_data', 'acp_econo')
     acp_enviro = calculateSumAndPercentage('hex_data', 'acp_enviro')
     acp_securite = calculateSumAndPercentage('hex_data', 'acp_securite')
     acp_cultsportloisir = calculateSumAndPercentage('hex_data', 'acp_cultsportloisir')
     acp_proximite = calculateSumAndPercentage('hex_data', 'acp_proximite')
-    indice_emv = calculateSumAndPercentage('hex_data', 'indice_emv')
 
+    document.getElementById('pop2021').innerHTML = `Population 2021 : ${pop2021[0]} | ${pop2021[1]}%`;
+    document.getElementById('acp_sociale').innerHTML = `Social : ${acp_sociale[1]} %`
+    document.getElementById('acp_econo').innerHTML = `Économique : ${acp_econo[1]}%`
+    document.getElementById('acp_enviro').innerHTML = `Environnemental : ${acp_enviro[1]}%`
+    document.getElementById('acp_securite').innerHTML = `Sécurité : ${acp_securite[1]}%`
+    document.getElementById('acp_cultsportloisir').innerHTML = `Culture, sport et loisir :${acp_cultsportloisir[1]}%`
+    document.getElementById('acp_proximite').innerHTML = `Proximité : ${acp_proximite[1]}%`
 
-    document.getElementById('pop2021').innerHTML = pop2021
-    document.getElementById('acp_sociale').innerHTML = acp_sociale
-    document.getElementById('acp_econo').innerHTML = acp_econo
-    document.getElementById('acp_enviro').innerHTML = acp_enviro
-    document.getElementById('acp_securite').innerHTML = acp_securite
-    document.getElementById('acp_cultsportloisir').innerHTML = acp_cultsportloisir
-    document.getElementById('acp_proximite').innerHTML = acp_proximite
-    document.getElementById('indice_emv').innerHTML = indice_emv
   });
+
+
+

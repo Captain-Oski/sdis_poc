@@ -27,9 +27,8 @@ body {
 
 #kpis {
     z-index: 1000;
-    position: absolute;
-    /* top: 10.5%; */
-    bottom: 10.5%;
+    position: fixed;
+    /* top: 10.5%;*/
+    bottom: 3.5%; 
     left: 30%;
-    width: 5%;
 }
