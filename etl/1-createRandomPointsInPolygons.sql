@@ -1,49 +1,22 @@
-CREATE TABLE sdis.indice_emv_pip AS SELECT 
+CREATE TABLE sdis.indice_emv_pip AS SELECT ogc_fid
 adidu,
-arr_vll,
-type,
-pop2021::real,
-lgp2021::real,
-nb2021_,
-mono_pr,
-immrc_p,
-atchmn_,
-snsdpl_,
-pr_mn_b,
-pr_mn_s,
-p__a_ap,
-pr_lq60,
-pr_ncnp,
-pr_n300,
-pr_lgch,
-mfts_pn
-cllsns_,
-crms_pn,
-nb_cm___,
-nb_r___,
-nb_ph__,
-nb_cl___,
-nb_p_tc,
-n____30,
-n______,
-nb_q___,
-spr____,
-acp_scl::real,
-acp_ecn::real,
-acp_nvr::real,
-acp_scr::real,
-acp_prx::real,
-acp_csl::real,
-idugd,
-supterr,
-pridu,
-ST_SetSRID(ST_GeneratePoints(geom, ie."pop2021"::int4),3857)::geometry as geom from sdis.indice_emv ie
+arr_ville,
+pop2021,
+logpriv2021,
+acp_sociale_2quintiles,
+acp_econo_2quintiles,
+acp_enviro_2quintiles,
+acp_securite_2quintiles,
+acp_proximite_2quintiles,
+acp_cultsportloisir_2quintiles,
+indice_emv,
+(ST_DumpPoints(ST_SetSRID(ST_GeneratePoints(geom, pop2021),3857)::geometry)).geom as geom 
+from sdis.test
 ;
 
 ALTER TABLE sdis.indice_emv_pip
-  ALTER COLUMN geom TYPE geometry(MULTIPOINT, 3857)
+  ALTER COLUMN geom TYPE geometry(POINT, 3857)
     USING ST_SetSRID(geom,3857)
 ;
     
 CREATE INDEX pip_geom_idx ON sdis.indice_emv_pip USING GIST (geom)
-;
