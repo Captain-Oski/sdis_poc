@@ -10,12 +10,12 @@ AVG(acp_securite_2quintiles)::real as acp_securite,
 AVG(acp_proximite_2quintiles)::real as acp_proximite,
 AVG(acp_cultsportloisir_2quintiles)::real as acp_cultsportloisir,
 AVG(indice_emv)::real as indice_emv,
+AVG(pop2021)::real as pop2021,
 sdis.indice_emv_hex_400m.geom
 FROM sdis.indice_emv_hex_400m
 LEFT JOIN sdis.indice_emv_pip ON st_intersects(sdis.indice_emv_hex_400m.geom,sdis.indice_emv_pip.geom)
 WHERE indice_emv IS NOT NULL
-GROUP BY sdis.indice_emv_hex_400m.geom
-;
+GROUP BY sdis.indice_emv_hex_400m.geom;
 
 ALTER TABLE sdis.indice_emv_hex_400m_acp_avg
   ALTER COLUMN geom TYPE geometry(POLYGON, 3857)

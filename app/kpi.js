@@ -12,9 +12,9 @@
     });
   
     // // Calculer le pourcentage de chaque entité
-    // features.forEach(function(feature) {
-    //   percentage = (feature.properties[propertyName] / sum) * 100;
-    // });
-    console.log('Sum:', sum);
-    console.log('Percentage:', percentage.toFixed(2) + '%');
+    features.forEach(function(feature) {
+      percentage = (feature.properties[propertyName] / sum) * 100;
+    });
+
+    return [sum.toFixed(),percentage.toFixed(2) + '%']
   }

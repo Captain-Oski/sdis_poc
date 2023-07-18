@@ -24,3 +24,12 @@ body {
     padding: 10px;
     background: ligthgrey;
 }
+
+#kpis {
+    z-index: 1000;
+    position: absolute;
+    /* top: 10.5%; */
+    bottom: 10.5%;
+    left: 30%;
+    width: 5%;
+}

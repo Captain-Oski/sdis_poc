@@ -5,21 +5,8 @@ var map = new maplibregl.Map({
     zoom: 9.5,
     antialias: true
 });
-let myLayers = [
-    // 'h3_100',
-    // {id: 'h3_200',
-    //     min: 0,
-    //     max:0
-    // },
-    // {id: 'h3_400',
-    //     min: 0,
-    //     max:0
-    // },
-    {id: 'h3_400m',
-    min: 0,
-    max:0
-    }
-]
+
+var pop2021,acp_cultsportloisir, acp_, acp_econo, acp_enviro, acp_securite, acp_sociale, acp_proximite,indice_emv
 
 const arrondissements = [
     'Ahuntsic-Cartierville',
@@ -175,5 +162,22 @@ map.on('load', (e) => {
 
 
 map.on('idle', function() {
-    calculateSumAndPercentage('hex_data', 'indice_emv')
+    pop = calculateSumAndPercentage('hex_data', 'pop2021')
+    acp_sociale = calculateSumAndPercentage('hex_data', 'acp_sociale')
+    acp_econo = calculateSumAndPercentage('hex_data', 'acp_econo')
+    acp_enviro = calculateSumAndPercentage('hex_data', 'acp_enviro')
+    acp_securite = calculateSumAndPercentage('hex_data', 'acp_securite')
+    acp_cultsportloisir = calculateSumAndPercentage('hex_data', 'acp_cultsportloisir')
+    acp_proximite = calculateSumAndPercentage('hex_data', 'acp_proximite')
+    indice_emv = calculateSumAndPercentage('hex_data', 'indice_emv')
+
+
+    document.getElementById('pop2021').innerHTML = pop2021
+    document.getElementById('acp_sociale').innerHTML = acp_sociale
+    document.getElementById('acp_econo').innerHTML = acp_econo
+    document.getElementById('acp_enviro').innerHTML = acp_enviro
+    document.getElementById('acp_securite').innerHTML = acp_securite
+    document.getElementById('acp_cultsportloisir').innerHTML = acp_cultsportloisir
+    document.getElementById('acp_proximite').innerHTML = acp_proximite
+    document.getElementById('indice_emv').innerHTML = indice_emv
   });
