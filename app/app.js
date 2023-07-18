@@ -163,20 +163,24 @@ map.on('load', (e) => {
 map.on('idle', function() {
 
     pop2021 = calculateSumAndPercentage('hex_data', 'pop2021')
-    acp_sociale = calculateSumAndPercentage('hex_data', 'acp_sociale')
-    acp_econo = calculateSumAndPercentage('hex_data', 'acp_econo')
-    acp_enviro = calculateSumAndPercentage('hex_data', 'acp_enviro')
-    acp_securite = calculateSumAndPercentage('hex_data', 'acp_securite')
-    acp_cultsportloisir = calculateSumAndPercentage('hex_data', 'acp_cultsportloisir')
-    acp_proximite = calculateSumAndPercentage('hex_data', 'acp_proximite')
+    qty = calculatePercentageVulnerability().qty
+    acp_sociale = calculatePercentage().acp_sociale
+    acp_econo = calculatePercentage().acp_econo
+    acp_enviro = calculatePercentage().acp_enviro
+    acp_securite = calculatePercentage().acp_securite
+    acp_cultsportloisir = calculatePercentage().acp_cultsportloisir
+    acp_proximite = calculatePercentage().acp_proximite
 
-    document.getElementById('pop2021').innerHTML = `Population 2021 : ${pop2021[0]} | ${pop2021[1]}%`;
-    document.getElementById('acp_sociale').innerHTML = `Social : ${acp_sociale[1]} %`
-    document.getElementById('acp_econo').innerHTML = `Économique : ${acp_econo[1]}%`
-    document.getElementById('acp_enviro').innerHTML = `Environnemental : ${acp_enviro[1]}%`
-    document.getElementById('acp_securite').innerHTML = `Sécurité : ${acp_securite[1]}%`
-    document.getElementById('acp_cultsportloisir').innerHTML = `Culture, sport et loisir :${acp_cultsportloisir[1]}%`
-    document.getElementById('acp_proximite').innerHTML = `Proximité : ${acp_proximite[1]}%`
+    document.getElementById('pop2021').innerHTML = `Population des aires de vulnérabilités : ${pop2021[0]}`;
+    document.getElementById('pop2021Pct').innerHTML = `Pourcentage de la population vivant dans ces aires : ${pop2021[1]}%`;
+    document.getElementById('qty').innerHTML = `Qté d'hexagones vulnérables : ${qty}%`;
+
+    document.getElementById('acp_sociale').innerHTML = `Social : ${acp_sociale} %`
+    document.getElementById('acp_econo').innerHTML = `Économique : ${acp_econo}%`
+    document.getElementById('acp_enviro').innerHTML = `Environnemental : ${acp_enviro}%`
+    document.getElementById('acp_securite').innerHTML = `Sécurité : ${acp_securite}%`
+    document.getElementById('acp_cultsportloisir').innerHTML = `Culture, sport et loisir :${acp_cultsportloisir}%`
+    document.getElementById('acp_proximite').innerHTML = `Proximité : ${acp_proximite}%`
 
   });
 

@@ -32,3 +32,10 @@ body {
     bottom: 3.5%; 
     left: 30%;
 }
+
+#infos {
+    z-index: 1000;
+    position: fixed;
+    top: 6.5%;
+    left: 30%;
+}

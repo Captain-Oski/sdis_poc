@@ -17,7 +17,7 @@ LEFT JOIN sdis.indice_emv_pip ON st_intersects(sdis.indice_emv_hex_400m.geom,sdi
 WHERE indice_emv IS NOT NULL
 GROUP BY sdis.indice_emv_hex_400m.geom;
 
-ALTER TABLE sdis.indice_emv_hex_400m_acp_avg
+ALTER TABLE sdis.indice_emv_hex_400m_result
   ALTER COLUMN geom TYPE geometry(POLYGON, 3857)
     USING ST_SetSRID(geom,3857);
     

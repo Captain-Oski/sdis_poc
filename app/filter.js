@@ -27,7 +27,6 @@ function filtrerParArrondissement() {
 
  
   function toggleLayerVisibility(layerId) {
-    console.log(`test`)
     var layer = map.getLayer(layerId);
     if (layer) {
       var visibility = map.getLayoutProperty(layerId, 'visibility');
