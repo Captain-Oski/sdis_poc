@@ -179,7 +179,7 @@ map.on('idle', function() {
     document.getElementById('acp_econo').innerHTML = `Économique : ${acp_econo}%`
     document.getElementById('acp_enviro').innerHTML = `Environnemental : ${acp_enviro}%`
     document.getElementById('acp_securite').innerHTML = `Sécurité : ${acp_securite}%`
-    document.getElementById('acp_cultsportloisir').innerHTML = `Culture, sport et loisir :${acp_cultsportloisir}%`
+    document.getElementById('acp_cultsportloisir').innerHTML = `Culture, sport et loisir : ${acp_cultsportloisir}%`
     document.getElementById('acp_proximite').innerHTML = `Proximité : ${acp_proximite}%`
 
   });

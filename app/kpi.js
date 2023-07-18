@@ -7,7 +7,9 @@ var percTFormatter = new Intl.NumberFormat(undefined, { maximumFractionDigits: 2
     var sum = 0;
   
     // Calculer la somme de la propriété numérique
-    features.forEach(function(feature) {
+    features.filter(function(feature) {
+        return feature.properties['indice_emv'] > 3.5;
+      }).forEach(function(feature) {
       sum += feature.properties[propertyName];
     });
 
