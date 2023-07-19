@@ -18,7 +18,7 @@ var percTFormatter = new Intl.NumberFormat(undefined, { maximumFractionDigits: 2
 
   
   function calculatePercentage() {
-    var features = map.queryRenderedFeatures({ layers: ['hex_data'] });
+    var features = map.queryRenderedFeatures({ layers: [activeLayer] });
     var acp_sociale= 0
     var acp_econo= 0
     var acp_enviro = 0
@@ -27,7 +27,7 @@ var percTFormatter = new Intl.NumberFormat(undefined, { maximumFractionDigits: 2
     var acp_proximite = 0
     
     features.filter(function(feature) {
-        return feature.properties['indice_emv'] > 3.5;
+        return feature.properties['indice_emv'] > 4;
       })
     .forEach(function(feature) {
         acp_sociale += feature.properties['acp_sociale'];
@@ -51,12 +51,12 @@ var percTFormatter = new Intl.NumberFormat(undefined, { maximumFractionDigits: 2
   }
 
   function calculatePercentageVulnerability() {
-    var features = map.queryRenderedFeatures({ layers: ['hex_data'] });
+    var features = map.queryRenderedFeatures({ layers: [activeLayer] });
 
     var qty = 0
     
     features.filter(function(feature) {
-        return feature.properties['indice_emv'] > 3.5;
+        return feature.properties['indice_emv'] > 4;
       })
     .forEach(function(feature) {
         qty += 1;

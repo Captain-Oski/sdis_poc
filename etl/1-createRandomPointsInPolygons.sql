@@ -4,15 +4,15 @@ adidu,
 arr_ville,
 pop2021,
 logpriv2021,
-acp_sociale_2quintiles,
-acp_econo_2quintiles,
-acp_enviro_2quintiles,
-acp_securite_2quintiles,
-acp_proximite_2quintiles,
-acp_cultsportloisir_2quintiles,
+acp_sociale as acp_sociale,
+acp_econo as acp_econo,
+acp_enviro as acp_enviro,
+acp_securite as acp_securite,
+acp_proximite as acp_proximite,
+acp_cultsportloisir as acp_cultsportloisir,
 indice_emv,
 (ST_DumpPoints(ST_SetSRID(ST_GeneratePoints(geom, pop2021),3857)::geometry)).geom as geom 
-from sdis.test
+from sdis.indice_emv_data_da
 ;
 
 ALTER TABLE sdis.indice_emv_pip
