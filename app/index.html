@@ -14,13 +14,13 @@
 <body>
 
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top ">
-    <a class="navbar-brand " href="#" style="margin-left: 1rem;">Indices d'équité des milieux de vie - 2023   </a>
+    <h1 class="navbar-brand " href="#" style="margin-left: 1rem;">Indices d'équité des milieux de vie - 2023   </h1>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
       aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <!-- <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="./index.html">H3</a>
@@ -29,7 +29,8 @@
           <a class="nav-link" href="./dotdensity.html">Densité de points</a>
         </li>
       </ul>
-    </div>
+    </div> -->
+
   </nav>
   <div id="infos">
     <h4 id="pop2021"></h4>
@@ -50,45 +51,111 @@
 
     <div id="menu">
       <div id="boite">
-        <div class="h4 mb-3">Indices</div>  
-          <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="switchDA" onchange="toggleLayerVisibility('da_data')">
-          <label class="form-check-label" for="switchDA">DA</label>
+
+        <div class="container mb-3" id="Title">
+          <h2 class="mb-3" >  Méthode d’agrégation  </h2>
+          <p class="h7"> Les 6 indices obtenus sont agrégés en un seul indice de la manière suivante : </p> 
+           <ul>
+            <li class="h7">
+              Transformation des indices en quintiles par dimensions
+            </li>
+            <li class="h7">
+              L’indice d’équité des milieux de vie est obtenu par la sommes des scores obtenus ( 0 ou 1) et agrégé pour donner un score entre 0 et 6
+            </li>
+            <li class="h7">
+              Un score de 6 est un secteur à la vulnérabilité maximale
+            </li>
+           </ul>
         </div>
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="switchHEX" checked onchange="toggleLayerVisibility('hex_data')">
-          <label class="form-check-label" for="switchHEX">HEX</label>
-        </div>
-      </div>
-      <div id="boite">
-      <div class="h4 mb-3">Indices</div>  
-      <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked>
-        <label class="form-check-label" for="flexSwitchCheckDefault">Culture, Sports et Loisirs</label>
-      </div>
-      <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedt" checked>
-        <label class="form-check-label" for="flexSwitchCheckChecked">Ressources de proximité</label>
-      </div>
-      <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDisabledt" checked>
-        <label class="form-check-label" for="flexSwitchCheckDisabled">Sécurité Urbaine</label>
-      </div>
-      <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabledt" checked>
-        <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Environnemental</label>
-      </div>
-      <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabledt" checked>
-        <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Économique</label>
-      </div>
-      <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabledt" checked>
-        <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Social</label>
-      </div>
-      </div>
-      <div id="boite">
-        <div class="h4 mb-3">Filtrer par arrondissement</div>  
+      
+        <div class="accordion" id="accordionExample">
+          
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading5">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                <div class="h4">Indices</div> 
+              </button>
+            </h2>
+            <div id="collapse5" class="accordion-collapse collapse show" aria-labelledby="heading5" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                
+                <div class="form-check">
+                  
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                  <label class="form-check-label" for="flexCheckDefault">
+                     Non vulnérable (0,1,2)
+                     <div class='box legend1'></div>
+                  </label>
+                  
+                  
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Vulnérable non prioritaire (3)
+                    <div class='box legend2'></div>
+
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Vulnérable et prioritaire (4,5,6)
+                    <div class='box legend3'></div>
+
+                  </label>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <div class="h4">Vulnérabilités</div>  
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked>
+                  <label class="form-check-label" for="flexSwitchCheckDefault">Culture, Sports et Loisirs</label>
+                </div>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedt" checked>
+                  <label class="form-check-label" for="flexSwitchCheckChecked">Ressources de proximité</label>
+                </div>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDisabledt" checked>
+                  <label class="form-check-label" for="flexSwitchCheckDisabled">Sécurité Urbaine</label>
+                </div>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabledt" checked>
+                  <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Environnemental</label>
+                </div>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabledt" checked>
+                  <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Économique</label>
+                </div>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabledt" checked>
+                  <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Social</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <div class="h4">Filtrer par arrondissement</div>  
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+
         <div class="form-check">
           <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
           <label class="form-check-label" for="flexCheckChecked" >
@@ -318,7 +385,58 @@
             Westmount
           </label>
         </div>
+              </div>
+            </div>
+          </div>
 
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading4">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                <div class="h4">Méthode comparative</div> 
+              </button>
+            </h2>
+            <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                  <label class="form-check-labe h5" for="exampleRadios1">
+                    Île de Montréal
+                  </label>
+                  <p class="mt-2">La comparaison statisique est faite en fonciton de tous les hexagones de l’Île</p>
+
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                  <label class="form-check-label h5" for="exampleRadios2">
+                    Arrondissements sélectionnés
+                  </label>
+                  <p class="mt-2">La comparaison statisique est faite en fonction de la sommes des scores des hexagones dans les arrondissements sélectionnés</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <div class="h4">Représentation spatiale</div> 
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="switchDA" onchange="toggleLayerVisibility('da_data')">
+                <label class="form-check-label" for="switchDA">Aire de diffusion</label>
+              </div>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="switchHEX" checked onchange="toggleLayerVisibility('hex_data')">
+                <label class="form-check-label" for="switchHEX">Grille hexagonale</label>
+              </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
 

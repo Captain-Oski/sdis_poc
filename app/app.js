@@ -1,9 +1,10 @@
 var map = new maplibregl.Map({
     container: 'map',
-    center: [-73.55392401446137, 45.50245825854543],
+    center: [ -73.64666056819226, 45.52627413546361],
     style: 'https://api.maptiler.com/maps/dataviz-light/style.json?key=JhO9AmIPH59xnAn5GiSj',
-    zoom: 9.5,
-    antialias: true
+    zoom: 10.75,
+    antialias: true,
+    hash: true
 });
 
 var pop2021,acp_cultsportloisir, acp_, acp_econo, acp_enviro, acp_securite, acp_sociale, acp_proximite,indice_emv
@@ -161,7 +162,6 @@ map.on('load', (e) => {
 
 
 map.on('idle', function() {
-
     pop2021 = calculateSumAndPercentage('hex_data', 'pop2021')
     qty = calculatePercentageVulnerability().qty
     acp_sociale = calculatePercentage().acp_sociale
@@ -183,6 +183,5 @@ map.on('idle', function() {
     document.getElementById('acp_proximite').innerHTML = `Proximité : ${acp_proximite}%`
 
   });
-
 
 
