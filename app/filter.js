@@ -1,50 +1,28 @@
-function filtrerParArrondissement() {
+function updateBoroughFilter() {
+    // TODO: arr is a data flow, so i made a const, where columns are not named well. NEED TO revise in ETL
     const arr = activeLayer == 'hex_data' ? 'nom' : 'arr_ville'
-    if (MapFiltersStore.getFilter('boroughs').includes("Tous les arrondissements")) {
-      map.setFilter(activeLayer, null);
-    } else {
-      map.setFilter(activeLayer,['in', arr , ...MapFiltersStore.getFilter('boroughs')]);
-    }
+    MapFiltersStore.clearFilter(arr)
+    getBoroughFilter(arr)
+    MapFiltersStore.executeFilter(activeLayer)
   }
 
-  function lireLabelsCheckboxChecked() {
-    const checkboxes = document.querySelectorAll('#flexCheckChecked:checked');
-    const labels = [];
-      checkboxes.forEach((checkbox) => {
+  function getBoroughFilter() {
+    const checkboxes = document.querySelectorAll('.boroughs:checked');
+    checkboxes.forEach((checkbox) => {
       const label = checkbox.nextElementSibling;
       if (label && label.tagName === 'LABEL') {
-        MapFiltersStore.addFilter('boroughs',label.textContent.trim())
-        console.log(MapFiltersStore.getFilter('boroughs'));
+        MapFiltersStore.addFilter('nom',label.textContent.trim())
       }
-    });
-    return labels;
+   });
   }
-
-  function toggleLayerVisibility(layerId) {
-    var layer = map.getLayer(layerId);
-    activeLayer = layerId
-    if (layer) {
-      var visibility = map.getLayoutProperty(layerId, 'visibility');
-      
-      if (visibility === 'visible') {
-        map.setLayoutProperty(layerId, 'visibility', 'none');
-      } else {
-        map.setLayoutProperty(layerId, 'visibility', 'visible');
-      }
-    }
-  }
-
-var filterValues = {
-  lessThan2: true,
-  between2And3: true,
-  greaterThan4: true
-};
 
 // Function to update filters
-function updateFilters() {
+function updateIndexesFilters() {
   var filters = [];
+  MapFiltersStore.clearFilter('indice_emv')
 
   if (filterValues.lessThan2) {
+    // MapFiltersStore.addFilter('indice_emv',['<', ['get', 'indice_emv'], 2])
     filters.push(['<', ['get', 'indice_emv'], 2]);
   }
 
@@ -55,32 +33,18 @@ function updateFilters() {
   if (filterValues.greaterThan4) {
     filters.push(['>', ['get', 'indice_emv'], 4]);
   }
-//   // Get the filter of a layer
-// var filter = map.getFilter(activeLayer);
 
-// // Log the filter to the console
-// console.log(filter,filters);
-
-  map.setFilter(activeLayer, ['any'].concat(filters));
+  MapFiltersStore.addFilter('indice_emv',['any'].concat(filters))
+  MapFiltersStore.executeFilter(activeLayer)
 }
 
-
-// Event handlers for filter buttons
-document.getElementById('legend1').addEventListener('change', function () {
-  filterValues.lessThan2 = !filterValues.lessThan2;
-  updateFilters();
-});
-
-document.getElementById('legend2').addEventListener('change', function () {
-  filterValues.between2And3 = !filterValues.between2And3;
-  updateFilters();
-});
-
-document.getElementById('legend3').addEventListener('change', function () {
-  filterValues.greaterThan4 = !filterValues.greaterThan4;
-  updateFilters();
-});
-
+// [
+// "all"
+// ,
+// ['any', ['<', ['get', 'indice_emv'], 2], ['>', ['get', 'indice_emv'], 4]]
+// ,
+// ['in', 'nom', 'Anjou']
+// ]
 
 const radioButtons = document.querySelectorAll('.repRadios');
 
