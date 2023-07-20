@@ -80,7 +80,7 @@ const MapFiltersStore = {
           // Obtenir les valeurs du filtre actuel
           const filterValues = MapFiltersStore.getFilter(filter);
           if (filterValues.length && filter == 'nom') {
-            individualFilters.push(['in', filter, ["array"].concat(filterValues)]); ////
+            individualFilters.push(['in',["get", filter],["literal",filterValues]]); ////
           } 
           else if (filterValues.length  && filter == 'indice_emv') {
             individualFilters.push(...filterValues)

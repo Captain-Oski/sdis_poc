@@ -36,10 +36,15 @@ map.on("load", (e) => {
                 // #d1eeea,#a8dbd9,#85c4c9,#68abb8,#4f90a6,#3b738f,#2a5674                   
             "fill-opacity": 0.8
           },
-      filter: [
-        "all",
-        ["in", "nom", ["array",["Anjou"]]]
-      ],
+      // filter: [
+      //   "all",
+      //   [
+      //     "any",
+      //     ["<", ["get", "indice_emv"], 2],
+      //     [">", ["get", "indice_emv"], 4]
+      //   ],
+      //   ["in", ["get", "nom"], "Anjou"]
+      // ],
           "layout": {
             // Make the layer visible by default.
             "visibility": "visible"
