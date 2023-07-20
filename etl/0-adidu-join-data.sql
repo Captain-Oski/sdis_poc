@@ -1,7 +1,6 @@
 DROP TABLE if exists sdis.indice_emv_data_da;
 create table sdis.indice_emv_data_da as
 select
-b.ogc_fid,
 b.adidu,
 b.arr_ville,
 b.pop2021,

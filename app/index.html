@@ -328,14 +328,29 @@
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="accordion-body">
+                  <!-- <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="switchDA" onchange="toggleLayerVisibility('da_data')">
+                  <label class="form-check-label" for="switchDA">Aire de diffusion</label>
+                </div>
                 <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="switchDA" onchange="toggleLayerVisibility('da_data')">
-                <label class="form-check-label" for="switchDA">Aire de diffusion</label>
-              </div>
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="switchHEX" checked onchange="toggleLayerVisibility('hex_data')">
-                <label class="form-check-label" for="switchHEX">Grille hexagonale</label>
-              </div>
+                  <input class="form-check-input" type="checkbox" role="switch" id="switchHEX" checked onchange="toggleLayerVisibility('hex_data')">
+                  <label class="form-check-label" for="switchHEX">Grille hexagonale</label>
+                </div> -->
+                <div class="form-check">
+                  <input class="form-check-input repRadios" type="radio" name="repSpatRadio" id="exampleRadios3" value="hex_data" checked> 
+                  <label class="form-check-labe h5" for="exampleRadios3">
+                    Grille hexagonale (400m)
+                  </label>
+                  <!-- <p class="mt-2">La comparaison statisique est faite en fonciton de tous les hexagones de l’Île</p> -->
+
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input repRadios" type="radio" name="repSpatRadio" id="exampleRadios4" value="da_data">
+                  <label class="form-check-label h5" for="exampleRadios4">
+                    Aires de diffusion
+                  </label>
+                  <!-- <p class="mt-2">La comparaison statisique est faite en fonction de la sommes des scores des hexagones dans les arrondissements sélectionnés</p> -->
+                </div>
               </div>
             </div>
           </div>
@@ -357,6 +372,7 @@
 <!-- ================================================== -->
 
 <script type='text/javascript' src="./app.js"></script>
+<script type='text/javascript' src="./store.js"></script>
 <script type='text/javascript' src="./filter.js"></script>
 <script type='text/javascript' src="./kpi.js"></script>
 </body>

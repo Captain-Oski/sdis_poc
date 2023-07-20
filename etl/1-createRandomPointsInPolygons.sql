@@ -1,5 +1,5 @@
 DROP TABLE IF exists sdis.indice_emv_pip;
-CREATE TABLE sdis.indice_emv_pip AS SELECT ogc_fid
+CREATE TABLE sdis.indice_emv_pip AS SELECT
 adidu,
 arr_ville,
 pop2021,

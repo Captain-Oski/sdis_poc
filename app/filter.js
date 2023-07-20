@@ -1,11 +1,9 @@
 function filtrerParArrondissement() {
-    const t = lireLabelsCheckboxChecked()
     const arr = activeLayer == 'hex_data' ? 'nom' : 'arr_ville'
-    console.log(t)
-    if (t.includes("Tous les arrondissements")) {
+    if (MapFiltersStore.getFilter('boroughs').includes("Tous les arrondissements")) {
       map.setFilter(activeLayer, null);
     } else {
-      map.setFilter(activeLayer,['in', arr , ...t]);
+      map.setFilter(activeLayer,['in', arr , ...MapFiltersStore.getFilter('boroughs')]);
     }
   }
 
@@ -15,7 +13,8 @@ function filtrerParArrondissement() {
       checkboxes.forEach((checkbox) => {
       const label = checkbox.nextElementSibling;
       if (label && label.tagName === 'LABEL') {
-        labels.push(label.textContent.trim());
+        MapFiltersStore.addFilter('boroughs',label.textContent.trim())
+        console.log(MapFiltersStore.getFilter('boroughs'));
       }
     });
     return labels;
@@ -24,7 +23,6 @@ function filtrerParArrondissement() {
   function toggleLayerVisibility(layerId) {
     var layer = map.getLayer(layerId);
     activeLayer = layerId
-    console.log(activeLayer)
     if (layer) {
       var visibility = map.getLayoutProperty(layerId, 'visibility');
       
@@ -83,20 +81,12 @@ document.getElementById('legend3').addEventListener('change', function () {
   updateFilters();
 });
 
-////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////
 
-// document.getElementById('switchDA').addEventListener('change', function () {
-//   if (activeLayer == 'hex_data') {
-//     activeLayer = 'da_data'
-//   }
-// });
+const radioButtons = document.querySelectorAll('.repRadios');
 
-// document.getElementById('switchHEX').addEventListener('change', function () {
-//   if (activeLayer == 'da_data') {
-//     activeLayer = 'hex_data'
-//   }
-// });
-
-////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////
+radioButtons.forEach(button => {
+  button.addEventListener('change', (event) => {
+    toggleLayerVisibility('hex_data')
+    toggleLayerVisibility('da_data')
+  });
+});
