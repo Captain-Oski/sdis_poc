@@ -80,9 +80,13 @@ const MapFiltersStore = {
           // Obtenir les valeurs du filtre actuel
           const filterValues = MapFiltersStore.getFilter(filter);
           if (filterValues.length && filter == 'nom') {
-            individualFilters.push(['in',["get", filter],["literal",filterValues]]); ////
+            individualFilters.push(['in',["get", filter],["literal",filterValues]]); //// Jean Néchier sur celle la
           } 
           else if (filterValues.length  && filter == 'indice_emv') {
+            individualFilters.push(...filterValues)
+          } 
+          else if (filterValues.length  && filter.includes('acp_')) {
+            // TODO reprendre ici pour creer la mecanique de filtre pour les acp
             individualFilters.push(...filterValues)
           } 
           else {
@@ -90,7 +94,7 @@ const MapFiltersStore = {
           }
         }
       }
-          // Construire le filtre 'all' en utilisant la syntaxe de Mapbox GL JS
+      // Construire le filtre 'all' en utilisant la syntaxe de Mapbox GL JS
       const allFilter = ['all', ...individualFilters];
       return allFilter;
     },

@@ -23,7 +23,7 @@ var percTFormatter = new Intl.NumberFormat(undefined, { maximumFractionDigits: 2
     var acp_econo= 0
     var acp_enviro = 0
     var acp_securite= 0
-    var acp_cultsportloisir= 0
+    var acp_cultsportloisir = 0
     var acp_proximite = 0
     
     features.filter(function(feature) {

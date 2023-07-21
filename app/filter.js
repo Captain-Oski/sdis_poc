@@ -6,15 +6,15 @@ function updateBoroughFilter() {
     MapFiltersStore.executeFilter(activeLayer)
   }
 
-  function getBoroughFilter() {
-    const checkboxes = document.querySelectorAll('.boroughs:checked');
-    checkboxes.forEach((checkbox) => {
-      const label = checkbox.nextElementSibling;
-      if (label && label.tagName === 'LABEL') {
-        MapFiltersStore.addFilter('nom',label.textContent.trim())
-      }
-   });
-  }
+function getBoroughFilter() {
+  const checkboxes = document.querySelectorAll('.boroughs:checked');
+  checkboxes.forEach((checkbox) => {
+    const label = checkbox.nextElementSibling;
+    if (label && label.tagName === 'LABEL') {
+      MapFiltersStore.addFilter('nom',label.textContent.trim())
+    }
+  });
+}
 
 // Function to update filters
 function updateIndexesFilters() {
@@ -23,28 +23,20 @@ function updateIndexesFilters() {
 
   if (filterValues.lessThan2) {
     // MapFiltersStore.addFilter('indice_emv',['<', ['get', 'indice_emv'], 2])
-    filters.push(['<', ['get', 'indice_emv'], 2]);
+    filters.push(['<', ['to-number',['get', 'indice_emv']], 2]);
   }
 
   if (filterValues.between2And3) {
-    filters.push(['all', ['>', ['get', 'indice_emv'], 2], ['<', ['get', 'indice_emv'], 4]]);
+    filters.push(['all', ['>=', ['to-number',['get', 'indice_emv']], 2], ['<=', ['to-number',['get', 'indice_emv']], 3]]);
   }
 
   if (filterValues.greaterThan4) {
-    filters.push(['>', ['get', 'indice_emv'], 4]);
+    filters.push(['>', ['to-number',['get', 'indice_emv']], 3]);
   }
 
   MapFiltersStore.addFilter('indice_emv',['any'].concat(filters))
   MapFiltersStore.executeFilter(activeLayer)
 }
-
-// [
-// "all"
-// ,
-// ['any', ['<', ['get', 'indice_emv'], 2], ['>', ['get', 'indice_emv'], 4]]
-// ,
-// ['in', 'nom', 'Anjou']
-// ]
 
 const radioButtons = document.querySelectorAll('.repRadios');
 
