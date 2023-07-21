@@ -27,11 +27,11 @@ function updateIndexesFilters() {
   }
 
   if (filterValues.between2And3) {
-    filters.push(['all', ['>=', ['to-number',['get', 'indice_emv']], 2], ['<=', ['to-number',['get', 'indice_emv']], 3]]);
+    filters.push(['all', ['>', ['to-number',['get', 'indice_emv']], 2], ['<', ['to-number',['get', 'indice_emv']], 4]]);
   }
 
   if (filterValues.greaterThan4) {
-    filters.push(['>', ['to-number',['get', 'indice_emv']], 3]);
+    filters.push(['>', ['to-number',['get', 'indice_emv']], 4]);
   }
 
   MapFiltersStore.addFilter('indice_emv',['any'].concat(filters))

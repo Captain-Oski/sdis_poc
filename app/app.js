@@ -28,19 +28,25 @@ map.on("load", (e) => {
         "paint": {
             "fill-color": [
                 "step",
-                [
-                  "+",
-                  ["to-number", ["get", "acp_sociale"]],
-                  ["to-number", ["get", "acp_econo"]],
-                  ["to-number", ["get", "cp_enviro"]],
-                  ["to-number", ["get", "acp_securite"]],
-                  ["to-number", ["get", "acp_proximite"]],
-                  ["to-number", ["get", "acp_cultsportloisir"]]
-                ],
+                  ["to-number", ["get","indice_emv"]],
                 "#d1eeea",  // First color when the sum is less than 2
-                2, "#68abb8",  // Second color when the sum is between 2 and 3
-                3, "#2a5674"  // Third color when the sum is 3.99 or greater
+                3, "#68abb8",  // Second color when the sum is between 2 and 3
+                4, "#2a5674"  // Third color when the sum is 3.99 or greater
               ],
+            //   "step",
+            //   [
+            //     "+",
+            //     ["to-number", ["get","acp_sociale"]],
+            //     ["to-number", ["get", "acp_econo"]],
+            //     ["to-number", ["get", "cp_enviro"]],
+            //     ["to-number", ["get", "acp_securite"]],
+            //     ["to-number", ["get", "acp_proximite"]],
+            //     ["to-number", ["get", "acp_cultsportloisir"]]
+            //   ],
+            //   "#d1eeea",  // First color when the sum is less than 2
+            //   2, "#68abb8",  // Second color when the sum is between 2 and 3
+            //   3, "#2a5674"  // Third color when the sum is 3.99 or greater
+            // ],
             // "fill-color": [
             //     "case",
             //     ["<", ["+", 
@@ -103,8 +109,8 @@ map.on("load", (e) => {
                     ["to-number",["get","acp_cultsportloisir"]]
                 ],
                 "#d1eeea",
-                2, "#68abb8",
-                3, "#2a5674"
+                3, "#68abb8",
+                4, "#2a5674"
                     // #d1eeea,#a8dbd9,#85c4c9,#68abb8,#4f90a6,#3b738f,#2a5674                   
             ],
             "fill-opacity": 0.8
@@ -191,8 +197,8 @@ map.on("idle", function() {
     acp_cultsportloisir = calculatePercentage().acp_cultsportloisir
     acp_proximite = calculatePercentage().acp_proximite
 
-    document.getElementById("pop2021").innerHTML = `Population des aires de vulnérabilités : ${pop2021[0]}`;
-    document.getElementById("pop2021Pct").innerHTML = `Pourcentage de la population vivant dans ces aires : ${pop2021[1]}%`;
+    document.getElementById("pop2021").innerHTML = `Population estimées des aires de vulnérabilités : ${pop2021[0]}`;
+    document.getElementById("pop2021Pct").innerHTML = `Pourcentage de la population estimées vivant dans ces aires : ${pop2021[1]}%`;
     document.getElementById("qty").innerHTML = `Qté d"hexagones vulnérables : ${qty}%`;
 
     document.getElementById("acp_sociale").innerHTML = `Social : ${acp_sociale} %`
