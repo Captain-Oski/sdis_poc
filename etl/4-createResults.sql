@@ -1,5 +1,5 @@
 ------------------------------------------------------------------
-------------------------REFERENCE  200m---------------------------
+----TODO CHANGE ONCE BINARY ACP AS BEEN RECALCULTED BY YANI ------
 ------------------------------------------------------------------
 DROP TABLE IF EXISTS sdis.indice_emv_hex_200m_result;
 
