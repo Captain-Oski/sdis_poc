@@ -2,7 +2,7 @@
 ------------------------------------------------------------------
 ------------------REFERENCE ILOT UNION-----------------------------
 ------------------------------------------------------------------
-DROP TABLE IF EXISTS sdis.da_grid;
+DROP TABLE IF EXISTS sdis.ilot_grid;
 CREATE TABLE sdis.ilot_grid AS SELECT ST_UNION(st_makevalid(geom)) as geom
 FROM sdis.ilots
 WHERE idpop_2021 > 0 and caractéri = 'Arrondissement de Montréal';

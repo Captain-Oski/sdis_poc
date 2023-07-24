@@ -13,7 +13,7 @@ WITH temp as (
     ROUND(AVG(acp_proximite),2)::real as acp_proximite,
     ROUND(AVG(acp_cultsportloisir),2)::real as acp_cultsportloisir,
     ROUND(AVG(indice_emv),2)::real as indice_emv,
-    ROUND(AVG(acp_sociale))::real as pop2021,
+    AVG(pop2021)::int4 as pop2021,
     sdis.indice_emv_hex_200m.geom
   FROM sdis.indice_emv_hex_200m
   LEFT JOIN sdis.indice_emv_pip ON st_intersects(sdis.indice_emv_hex_200m.geom,sdis.indice_emv_pip.geom)
