@@ -14,7 +14,7 @@ var activeLayer = "hex_data"
 
 
 map.on("load", (e) => {
-    
+
     map.addSource("hex_source", {
         "type": "vector",
         "tiles": ["https://captain-oski-verbose-space-guacamole-57gr6w464427vq5-8801.preview.app.github.dev/sdis.indice_emv_hex_200m_result/{z}/{x}/{y}.pbf"]
@@ -30,9 +30,11 @@ map.on("load", (e) => {
                 "step",
                   ["to-number", ["get","indice_emv"]],
                 "#d1eeea",  // First color when the sum is less than 2
-                3, "#68abb8",  // Second color when the sum is between 2 and 3
+                2, "#68abb8",  // Second color when the sum is between 2 and 3
                 4, "#2a5674"  // Third color when the sum is 3.99 or greater
               ],
+              //#009B9E,#42B7B9,#A7D3D4,#F1F1F1,#E4C1D9,#D691C1,#C75DAB
+
             //   "step",
             //   [
             //     "+",
@@ -99,19 +101,11 @@ map.on("load", (e) => {
         paint: {
             "fill-outline-color": "transparent",
             "fill-color": [
-                "step",
-                ["+", 
-                    ["to-number",["get","acp_sociale"]],
-                    ["to-number",["get","acp_econo"]],
-                    ["to-number",["get","cp_enviro"]],
-                    ["to-number",["get","acp_securite"]],
-                    ["to-number",["get","acp_proximite"]],
-                    ["to-number",["get","acp_cultsportloisir"]]
-                ],
-                "#d1eeea",
-                3, "#68abb8",
-                4, "#2a5674"
-                    // #d1eeea,#a8dbd9,#85c4c9,#68abb8,#4f90a6,#3b738f,#2a5674                   
+              "step",
+              ["to-number", ["get","indice_emv"]],
+              "#d1eeea",  // First color when the sum is less than 2
+              2, "#68abb8",  // Second color when the sum is between 2 and 3
+              4, "#2a5674"  // Third color when the sum is 3.99 or greater
             ],
             "fill-opacity": 0.8
           },
@@ -185,28 +179,42 @@ map.on("load", (e) => {
    
 })
 
+async function fetchPopData() {
+  const arr = MapFiltersStore.getFilter('nom') ? MapFiltersStore.getFilter('nom') : null
+  try {
+    const data = await getPopData(arr); // Remplacez 'Anjou,Lachine' par votre liste de mots
+    document.getElementById("pop2021").innerHTML = `Population estimées des aires de vulnérabilités : ${data[0].total_population}`;
+    document.getElementById("pop2021Pct").innerHTML = `Pourcentage de la population estimées vivant dans ces aires : ${Math.round(data[0].percentage_of_total_population)}%`;
+    document.getElementById("qty").innerHTML = `Qté d'hexagones vulnérables : ${data[0].total_entries_with_indice_emv_gte_4}`;
+    // Faites quelque chose avec les données ici
+  } catch (error) {
+    console.error('Erreur lors de la récupération des données', error);
+    // Gérez l'erreur ici
+  }
+}
+
+async function fetchIndexData() {
+  
+  const arr = MapFiltersStore.getFilter('nom') ? MapFiltersStore.getFilter('nom') : null
+  try {
+    const data = await getIndexPct(arr); // Remplacez 'Anjou,Lachine' par votre liste de mots
+    document.getElementById("acp_sociale").innerHTML = `Social : ${Math.round(data[0].percentage_of_total_acp_sociale)} %`
+    document.getElementById("acp_econo").innerHTML = `Économique : ${Math.round(data[0].percentage_of_total_acp_econo)}%`
+    document.getElementById("acp_enviro").innerHTML = `Environnemental : ${Math.round(data[0].percentage_of_total_acp_enviro)}%`
+    document.getElementById("acp_securite").innerHTML = `Sécurité : ${Math.round(data[0].percentage_of_total_acp_securite)}%`
+    document.getElementById("acp_cultsportloisir").innerHTML = `Culture, sport et loisir : ${Math.round(data[0].percentage_of_total_acp_cultsportloisir)}%`
+    document.getElementById("acp_proximite").innerHTML = `Proximité : ${Math.round(data[0].percentage_of_total_acp_proximite)}%`
+    // Faites quelque chose avec les données ici
+  } catch (error) {
+    console.error('Erreur lors de la récupération des données', error);
+    // Gérez l'erreur ici
+  }
+}
+
 
 map.on("idle", function() {
-    console.log(map.getLayer('hex_data'))
-    pop2021 = calculateSumAndPercentage(activeLayer, "pop2021")
-    qty = calculatePercentageVulnerability().qty
-    acp_sociale = calculatePercentage().acp_sociale
-    acp_econo = calculatePercentage().acp_econo
-    acp_enviro = calculatePercentage().acp_enviro
-    acp_securite = calculatePercentage().acp_securite
-    acp_cultsportloisir = calculatePercentage().acp_cultsportloisir
-    acp_proximite = calculatePercentage().acp_proximite
-
-    document.getElementById("pop2021").innerHTML = `Population estimées des aires de vulnérabilités : ${pop2021[0]}`;
-    document.getElementById("pop2021Pct").innerHTML = `Pourcentage de la population estimées vivant dans ces aires : ${pop2021[1]}%`;
-    document.getElementById("qty").innerHTML = `Qté d"hexagones vulnérables : ${qty}%`;
-
-    document.getElementById("acp_sociale").innerHTML = `Social : ${acp_sociale} %`
-    document.getElementById("acp_econo").innerHTML = `Économique : ${acp_econo}%`
-    document.getElementById("acp_enviro").innerHTML = `Environnemental : ${acp_enviro}%`
-    document.getElementById("acp_securite").innerHTML = `Sécurité : ${acp_securite}%`
-    document.getElementById("acp_cultsportloisir").innerHTML = `Culture, sport et loisir : ${acp_cultsportloisir}%`
-    document.getElementById("acp_proximite").innerHTML = `Proximité : ${acp_proximite}%`
+    fetchPopData();
+    fetchIndexData()
 
 });
 

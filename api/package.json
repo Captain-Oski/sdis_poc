@@ -1,0 +1,16 @@
+{
+    "name": "micro-api",
+    "version": "1.0.0",
+    "description": "Micro API with Node.js and Express",
+    "main": "index.js",
+    "scripts": {
+      "start": "node index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "express": "^4.17.1",
+      "pg": "^8.7.1"
+    }
+  }
