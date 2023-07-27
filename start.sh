@@ -6,6 +6,8 @@
 # &&
 # sudo docker compose run --rm ogr ogr2ogr -s_srs EPSG:4326 -t_srs EPSG:3857 -f PostgreSQL -lco GEOMETRY_NAME=geom -lco FID=gid -lco SPATIAL_INDEX=GIST -nln sdis.arrondissements -overwrite PG:"dbname='sdis' host='172.19.0.2' port='5432' user='admin_geo' password='password'"  ./data/arrondissements.geojson  \
 # &&
+sudo docker compose run --rm ogr ogr2ogr -f PostgreSQL -lco FID=gid -nln sdis.hex_results -overwrite PG:"dbname='sdis' host='172.18.0.3' port='5432' user='admin_geo' password='password'"  ./data/update_hex_index.csv \
+# &&
 # sudo docker compose run --rm ogr ogrinfo PG:"dbname='sdis' host='172.19.0.2' port='5432' user='admin_geo' password='password'" -sql @./etl/0-adidu-join-data.sql \
 # &&
 # sudo docker compose run --rm ogr ogrinfo PG:"dbname='sdis' host='172.19.0.2' port='5432' user='admin_geo' password='password'" -sql @./etl/1-createRandomPointsInPolygons.sql \
@@ -15,4 +17,4 @@
 # sudo docker compose run --rm ogr ogrinfo PG:"dbname='sdis' host='172.19.0.2' port='5432' user='admin_geo' password='password'" -sql @./etl/3-create_ilots_results.sql \
 # &&
 # sudo docker compose run --rm ogr ogrinfo PG:"dbname='sdis' host='172.19.0.2' port='5432' user='admin_geo' password='password'" -sql @./etl/4-createResults.sql \
- sudo docker compose run --rm ogr ogrinfo PG:"dbname='sdis' host='172.19.0.3' port='5432' user='admin_geo' password='password'" -sql @./etl/random_arr_ville.sql \
+#  sudo docker compose run --rm ogr ogrinfo PG:"dbname='sdis' host='172.18.0.3' port='5432' user='admin_geo' password='password'" -sql @./etl/5-updateResults.sql \
