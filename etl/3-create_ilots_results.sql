@@ -27,7 +27,7 @@ CREATE TABLE sdis.indice_emv_ilots_data AS
     FROM 
         indice_emv_data_pip a
     LEFT JOIN 
-        sdis.indice_emv_hex_200m b
+        sdis.ilots_hex_200m b
     ON 
     st_intersects(a.geom,b.geom);
 

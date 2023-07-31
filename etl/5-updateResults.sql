@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS sdis.sdis_results;
-create table sdis.sdis_results as ( 
+
+CREATE TABLE sdis.sdis_results AS ( 
 SELECT 
     id,
     nom,

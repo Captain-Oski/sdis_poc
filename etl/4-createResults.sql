@@ -1,22 +1,22 @@
 ------------------------------------------------------------------
-----TODO CHANGE ONCE BINARY ACP AS BEEN RECALCULTED BY YANI ------
+---- OBSOLETE 31-07-2023 ------
 ------------------------------------------------------------------
 DROP TABLE IF EXISTS sdis.indice_emv_hex_200m_result;
 
 create table sdis.indice_emv_hex_200m_result as 
 WITH temp as (
   SELECT
-    ROUND(AVG(acp_sociale),2)::real as acp_sociale,
-    ROUND(AVG(acp_econo),2)::real as acp_econo,
-    ROUND(AVG(acp_enviro),2)::real as acp_enviro,
-    ROUND(AVG(acp_securite),2)::real as acp_securite,
-    ROUND(AVG(acp_proximite),2)::real as acp_proximite,
-    ROUND(AVG(acp_cultsportloisir),2)::real as acp_cultsportloisir,
-    ROUND(AVG(indice_emv),2)::real as indice_emv,
+    ROUND(AVG(b.acp_sociale::real),2)::real as acp_sociale,
+    ROUND(AVG(b.acp_econo),2)::real as acp_econo,
+    ROUND(AVG(b.acp_enviro),2)::real as acp_enviro,
+    ROUND(AVG(b.acp_securite),2)::real as acp_securite,
+    ROUND(AVG(b.acp_proximite),2)::real as acp_proximite,
+    ROUND(AVG(b.acp_cultsportloisir),2)::real as acp_cultsportloisir,
+    ROUND(AVG(b.indice_emv),2)::real as indice_emv,
     AVG(pop2021)::int4 as pop2021,
-    sdis.indice_emv_hex_200m.geom
-  FROM sdis.indice_emv_hex_200m
-  LEFT JOIN sdis.indice_emv_pip ON st_intersects(sdis.indice_emv_hex_200m.geom,sdis.indice_emv_pip.geom)
+    a.geom
+  FROM sdis.indice_emv_hex_200m a
+  LEFT JOIN sdis.indice_emv_ilots_data b ON st_intersects(sdis.indice_emv_hex_200m.geom,sdis.indice_emv_ilots_data.geom)
   WHERE indice_emv IS NOT NULL
   GROUP BY sdis.indice_emv_hex_200m.geom
 ),
