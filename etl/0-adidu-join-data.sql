@@ -1,3 +1,4 @@
+-- OBSOLETE 31-07-2023
 -- DROP TABLE if exists sdis.indice_emv_data_da;
 -- create table sdis.indice_emv_data_da as
 -- select

@@ -30,9 +30,9 @@ app.get('/pop_data', (req, res) => {
    let query = `
     SELECT 
     SUM(pop2021) AS total_population,
-    (SUM(pop2021) * 100.0 / (SELECT SUM(pop2021) FROM sdis.indice_emv_hex_200m_result)) AS percentage_of_total_population,
+    (SUM(pop2021) * 100.0 / (SELECT SUM(pop2021) FROM sdis.sdis_results)) AS percentage_of_total_population,
     COUNT(*) AS total_entries_with_indice_emv_gte_4
-    FROM sdis.indice_emv_hex_200m_result
+    FROM sdis.sdis_results
     WHERE indice_emv >= 4.0 
     `
     if (arr) {
@@ -64,7 +64,7 @@ app.get('/index_pct', (req, res) => {
           (SUM(acp_securite) * 100.0 / SUM(indice_emv)) AS percentage_of_total_acp_securite,
           (SUM(acp_proximite) * 100.0 / SUM(indice_emv)) AS percentage_of_total_acp_proximite,
           (SUM(acp_cultsportloisir) * 100.0 / SUM(indice_emv)) AS percentage_of_total_acp_cultsportloisir
-      FROM sdis.indice_emv_hex_200m_result
+      FROM sdis.sdis_results
       WHERE indice_emv >= 4.0 
     `;
 

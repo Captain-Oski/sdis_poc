@@ -17,14 +17,14 @@ map.on("load", (e) => {
 
     map.addSource("hex_source", {
         "type": "vector",
-        "tiles": ["https://captain-oski-verbose-space-guacamole-57gr6w464427vq5-8801.preview.app.github.dev/sdis.indice_emv_hex_200m_result/{z}/{x}/{y}.pbf"]
+        "tiles": ["https://captain-oski-verbose-space-guacamole-57gr6w464427vq5-8801.preview.app.github.dev/sdis.sdis_results/{z}/{x}/{y}.pbf"]
     });
 
     map.addLayer({
         "id": "hex_data",
         "type": "fill",
         "source": "hex_source",
-        "source-layer": "sdis.indice_emv_hex_200m_result",
+        "source-layer": "sdis.sdis_results",
         "paint": {
             "fill-color": [
                 "step",

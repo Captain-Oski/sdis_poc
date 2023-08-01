@@ -1,3 +1,4 @@
+-- OBSOLETE 31-07-2023
 -- DROP TABLE IF exists sdis.indice_emv_pip;
 -- CREATE TABLE sdis.indice_emv_pip AS SELECT
 -- adidu,
