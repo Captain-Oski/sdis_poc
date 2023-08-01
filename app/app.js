@@ -27,18 +27,15 @@ map.on("load", (e) => {
         "source-layer": "sdis.sdis_results",
         "paint": {
           "fill-outline-color": "transparent",
-            "fill-color": {
+            "fill-color": 
+            {
                 'property': 'indice_emv',
                 'stops': [[0, '#d1eeea'], [6, '#2a5674']]
-                // "step",
-                //   ["to-number", ["get","indice_emv"]],
-                // "#d1eeea",  // First color when the sum is less than 2
-                // 2, "#68abb8",  // Second color when the sum is between 2 and 3
-                // 4, "#2a5674"  // Third color when the sum is 3.99 or greater
             },
-              //#009B9E,#42B7B9,#A7D3D4,#F1F1F1,#E4C1D9,#D691C1,#C75DAB
 
-            //   "step",
+            // TODO : Créer la fonction qui s'occupe d'ajouter et retirer les variables de l'équation et qui retire 1 à chaque fois
+            // -- filter.js updateVulnerabilities
+            //   ["step",
             //   [
             //     "+",
             //     ["to-number", ["get","acp_sociale"]],
@@ -52,38 +49,8 @@ map.on("load", (e) => {
             //   2, "#68abb8",  // Second color when the sum is between 2 and 3
             //   3, "#2a5674"  // Third color when the sum is 3.99 or greater
             // ],
-            // "fill-color": [
-            //     "case",
-            //     ["<", ["+", 
-            //             ["to-number", ["get", "acp_sociale"]],
-            //             ["to-number", ["get", "acp_econo"]],
-            //             ["to-number", ["get", "cp_enviro"]],
-            //             ["to-number", ["get", "acp_securite"]],
-            //             ["to-number", ["get", "acp_proximite"]],
-            //             ["to-number", ["get", "acp_cultsportloisir"]]
-            //           ], 2],
-            //     "#d1eeea",  // First color when the sum is less than 2
-            //     ["<", ["+", 
-            //             ["to-number", ["get", "acp_sociale"]],
-            //             ["to-number", ["get", "acp_econo"]],
-            //             ["to-number", ["get", "cp_enviro"]],
-            //             ["to-number", ["get", "acp_securite"]],
-            //             ["to-number", ["get", "acp_proximite"]],
-            //             ["to-number", ["get", "acp_cultsportloisir"]]
-            //           ], 3.99],
-            //     "#68abb8",  // Second color when the sum is between 2 (inclusive) and 4 (exclusive)
-            //     "#2a5674"   // Third color when the sum is 4 or greater
-            //   ],
-            // "fill-color": [
-            //     "case",
-            //     ["<", ["+", ["to-number", ["get", "acp_sociale"]], ["to-number", ["get", "acp_econo"]], ["to-number", ["get", "cp_enviro"]], ["to-number", ["get", "acp_securite"]], ["to-number", ["get", "acp_proximite"]], ["to-number", ["get", "acp_cultsportloisir"]]], 2],
-            //     "#d1eeea",  // First color when the sum is less than 2
-            //     ["all", [">=", ["+", ["to-number", ["get", "acp_sociale"]], ["to-number", ["get", "acp_econo"]], ["to-number", ["get", "cp_enviro"]], ["to-number", ["get", "acp_securite"]], ["to-number", ["get", "acp_proximite"]], ["to-number", ["get", "acp_cultsportloisir"]]], 2], ["<", ["+", ["to-number", ["get", "acp_sociale"]], ["to-number", ["get", "acp_econo"]], ["to-number", ["get", "cp_enviro"]], ["to-number", ["get", "acp_securite"]], ["to-number", ["get", "acp_proximite"]], ["to-number", ["get", "acp_cultsportloisir"]]], 3.99]],
-            //     "#68abb8",  // Second color when the sum is between 2 and 3.99
-            //     "#2a5674"  // Third color when the sum is 3.99 or greater
-            //   ],
-                // #d1eeea,#a8dbd9,#85c4c9,#68abb8,#4f90a6,#3b738f,#2a5674                   
-            "fill-opacity": 0.8
+                        
+            "fill-opacity": 1
           },
           "layout": {
             // Make the layer visible by default.
@@ -110,7 +77,7 @@ map.on("load", (e) => {
               2, "#68abb8",  // Second color when the sum is between 2 and 3
               4, "#2a5674"  // Third color when the sum is 3.99 or greater
             ],
-            "fill-opacity": 0.8
+            "fill-opacity": 1
           },
           "layout": {
             // Make the layer visible by default.
@@ -135,28 +102,26 @@ map.on("load", (e) => {
     });
    
     ["hex_data", "da_data"].forEach((layer) => {
+
+      const opacitySlider = document.getElementById('opacitySlider');
+      opacitySlider.addEventListener('input', function() {
+        const opacity = this.value;
+        map.setPaintProperty(layer, 'fill-opacity', parseFloat(opacity));
+      });
+
+
         map.on("click", layer, function (e) {
 
             var coordinates = e.lngLat;
             var description = `
-            <div>Social :${Math.round(e.features[0].properties.acp_sociale * 100) / 100}<div/>
-            <div>Économique :${Math.round(e.features[0].properties.acp_econo * 100) / 100}<div/>
-            <div>Environnement:${Math.round(e.features[0].properties.acp_enviro * 100) / 100}<div/>
-            <div>Sécurité Urbaine :${Math.round(e.features[0].properties.acp_securite * 100) / 100}<div/>
-            <div>Ressources de proximité :${Math.round(e.features[0].properties.acp_proximite * 100) / 100}<div/>
-            <div>Culture, Sports et Loisirs :${Math.round(e.features[0].properties.acp_cultsportloisir * 100) / 100}<div/>
-            <div>Indice global : ${Math.round(e.features[0].properties.indice_emv * 100) / 100}<div/>
+            <div class='h5'>Indice global : ${Math.round(e.features[0].properties.indice_emv * 100) / 100}</div>
+            <div>Social :${Math.round(e.features[0].properties.acp_sociale * 100) / 100}</div>
+            <div>Économique :${Math.round(e.features[0].properties.acp_econo * 100) / 100}</div>
+            <div>Environnement:${Math.round(e.features[0].properties.acp_enviro * 100) / 100}</div>
+            <div>Sécurité Urbaine :${Math.round(e.features[0].properties.acp_securite * 100) / 100}</div>
+            <div>Ressources de proximité :${Math.round(e.features[0].properties.acp_proximite * 100) / 100}</div>
+            <div>Culture, Sports et Loisirs :${Math.round(e.features[0].properties.acp_cultsportloisir * 100) / 100}</div>
             `
-
-            // var description = `
-            // <div>Social :${e.features[0].properties.acp_sociale}<div/>
-            // <div>Économique :${e.features[0].properties.acp_econo}<div/>
-            // <div>Environnement:${e.features[0].properties.acp_enviro}<div/>
-            // <div>Sécurité Urbaine :${e.features[0].properties.acp_securite}<div/>
-            // <div>Ressources de proximité :${e.features[0].properties.acp_proximite}<div/>
-            // <div>Culture, Sports et Loisirs :${e.features[0].properties.acp_cultsportloisir}<div/>
-            // <div>Indice global : ${e.features[0].properties.indice_emv}<div/>
-            // `
 
             while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
@@ -236,3 +201,5 @@ function toggleLayerVisibility(layerId) {
     }
   }
 
+
+  

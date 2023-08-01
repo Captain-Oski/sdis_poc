@@ -113,35 +113,35 @@
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingTwo">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                <div class="h4">Vulnérabilités</div>  
+                <div class="h4">Vulnérabilités <i>(inactif)</i></div>  
               </button>
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
               <div class="accordion-body">
                 
                 <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked>
-                  <label class="form-check-label" for="flexSwitchCheckDefault">Culture, Sports et Loisirs</label>
+                  <input class="form-check-input" type="checkbox" role="switch" id="cultureSportsLoisirsCheckbox" value="acp_cultsportloisir" checked>
+                  <label class="form-check-label" for="cultureSportsLoisirsCheckbox">Culture, Sports et Loisirs</label>
                 </div>
                 <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedt" checked>
-                  <label class="form-check-label" for="flexSwitchCheckChecked">Ressources de proximité</label>
+                  <input class="form-check-input" type="checkbox" role="switch" id="ressourcesProximiteCheckbox" value="acp_proximite" checked>
+                  <label class="form-check-label" for="ressourcesProximiteCheckbox">Ressources de proximité</label>
                 </div>
                 <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDisabledt" checked>
-                  <label class="form-check-label" for="flexSwitchCheckDisabled">Sécurité Urbaine</label>
+                  <input class="form-check-input" type="checkbox" role="switch" id="securiteUrbaineCheckbox" value="acp_securite" checked>
+                  <label class="form-check-label" for="securiteUrbaineCheckbox">Sécurité Urbaine</label>
                 </div>
                 <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabledt" checked>
-                  <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Environnemental</label>
+                  <input class="form-check-input" type="checkbox" role="switch" id="environnementalCheckbox" value="acp_enviro" checked>
+                  <label class="form-check-label" for="environnementalCheckbox">Environnemental</label>
                 </div>
                 <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabledt" checked>
-                  <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Économique</label>
+                  <input class="form-check-input" type="checkbox" role="switch" id="economiqueCheckbox" value="acp_econo" checked>
+                  <label class="form-check-label" for="economiqueCheckbox">Économique</label>
                 </div>
                 <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabledt" checked>
-                  <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Social</label>
+                  <input class="form-check-input" type="checkbox" role="switch" id="socialCheckbox" value="acp_sociale" checked>
+                  <label class="form-check-label" for="socialCheckbox">Social</label>
                 </div>
               </div>
             </div>
@@ -156,140 +156,7 @@
             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
               <div class="accordion-body">
                 <div id="dynamicComponentsContainer"></div>
-        <!-- <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked onchange="filtrerParArrondissement()">
-          <label class="form-check-label" for="flexCheckChecked" >
-            Tous les arrondissements
-          </label>
-        </div> -->
-        <!-- <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
-          <label class="form-check-label" for="flexCheckChecked">
-            Ahuntsic-Cartierville
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
-          <label class="form-check-label" for="flexCheckChecked">
-            Anjou
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
-          <label class="form-check-label" for="flexCheckChecked">
-            
-            Côte-des-Neiges-Notre-Dame-de-Grâce
-           
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
-          <label class="form-check-label" for="flexCheckChecked">
-            Lachine
-            
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
-          <label class="form-check-label" for="flexCheckChecked">
-            LaSalle
-            </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
-          <label class="form-check-label" for="flexCheckChecked">
-            Le Plateau-Mont-Royal
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
-          <label class="form-check-label" for="flexCheckChecked">
-            Le Sud-Ouest
-             
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
-          <label class="form-check-label" for="flexCheckChecked">
-            L'Île-Bizard-Sainte-Geneviève
-            
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
-          <label class="form-check-label" for="flexCheckChecked">
-            Mercier-Hochelaga-Maisonneuve
-            </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
-          <label class="form-check-label" for="flexCheckChecked">
-            Montréal-Nord  
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
-          <label class="form-check-label" for="flexCheckChecked">
-            Outremont
-            
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
-          <label class="form-check-label" for="flexCheckChecked">
-            Pierrefonds-Roxboro
-           
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
-          <label class="form-check-label" for="flexCheckChecked">
-            Rivière-des-Prairies-Pointe-aux-Trembles
-           
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
-          <label class="form-check-label" for="flexCheckChecked">
-            Rosemont-La Petite-Patrie
-           
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
-          <label class="form-check-label" for="flexCheckChecked">
-            Saint-Laurent
-           
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
-          <label class="form-check-label" for="flexCheckChecked">
-            Saint-Léonard
-            
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
-          <label class="form-check-label" for="flexCheckChecked">
-            Verdun
-           
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
-          <label class="form-check-label" for="flexCheckChecked">
-            Ville-Marie
-            
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onchange="filtrerParArrondissement()">
-          <label class="form-check-label" for="flexCheckChecked">
-            Villeray-Saint-Michel-Parc-Extension
-            
-          </label>
-        </div> -->
+   
               </div>
             </div>
           </div>
@@ -297,7 +164,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header" id="heading4">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                <div class="h4">Méthode comparative</div> 
+                <div class="h4">Méthode comparative <i>(inactif)</i></div> 
               </button>
             </h2>
             <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#accordionExample">
@@ -340,7 +207,7 @@
                 <div class="form-check">
                   <input class="form-check-input repRadios" type="radio" name="repSpatRadio" id="exampleRadios3" value="hex_data" checked> 
                   <label class="form-check-labe h5" for="exampleRadios3">
-                    Grille hexagonale (400m)
+                    Grille hexagonale (200m)
                   </label>
                   <!-- <p class="mt-2">La comparaison statisique est faite en fonciton de tous les hexagones de l’Île</p> -->
 
@@ -352,6 +219,24 @@
                   </label>
                   <!-- <p class="mt-2">La comparaison statisique est faite en fonction de la sommes des scores des hexagones dans les arrondissements sélectionnés</p> -->
                 </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOpa" aria-expanded="true" aria-controls="collapseOne">
+                <div class="h4">Opacité</div> 
+              </button>
+            </h2>
+            <div id="collapseOpa" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+              
+                <div class="form-check">
+                  <label for="opacitySlider">Transparence de la couche: <output id="num">1</output> </label>
+                  <input type="range" class="form-range" id="opacitySlider" min="0" max="1" step="0.1" value="1" oninput="num.value = this.value"> </div></input>
+                  
+                </div>
+
               </div>
             </div>
           </div>

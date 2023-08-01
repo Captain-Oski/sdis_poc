@@ -38,6 +38,20 @@ function updateIndexesFilters() {
   MapFiltersStore.executeFilter(activeLayer)
 }
 
+
+// Function to Update Fill Color Property
+function updateVulnerabilities(variables) {
+
+    const expressions = ["step"];
+      for (const variable of variables) {
+        expressions.push(["+", ["to-number", ["get", variable]]]);
+      }
+      expressions.push("#d1eeea", 2, "#68abb8", 3, "#2a5674");
+
+      map.setPaintProperty('YOUR_LAYER_ID', 'fill-color', expressions);
+}
+
+
 const radioButtons = document.querySelectorAll('.repRadios');
 
 radioButtons.forEach(button => {
@@ -46,3 +60,4 @@ radioButtons.forEach(button => {
     toggleLayerVisibility('da_data')
   });
 });
+
