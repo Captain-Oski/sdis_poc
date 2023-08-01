@@ -3,13 +3,13 @@ DROP TABLE IF EXISTS sdis.indice_emv_hex_200m_result;
 create table sdis.indice_emv_hex_200m_result as 
 WITH temp as (
   select
-    ROUND(AVG(replace(b.acp_sociale, ',', '.')::numeric), 2)::real AS acp_sociale,
-    ROUND(AVG(replace(b.acp_econo, ',', '.')::numeric), 2)::real AS acp_econo,
-    ROUND(AVG(replace(b.acp_environn, ',', '.')::numeric), 2)::real AS acp_enviro,
-    ROUND(AVG(replace(b.acp_securité, ',', '.')::numeric), 2)::real AS acp_securite,
-    ROUND(AVG(replace(b.acp_proximité, ',', '.')::numeric), 2)::real AS acp_proximite,
-    ROUND(AVG(replace(b.acp_cultsportloisir, ',', '.')::numeric), 2)::real AS acp_cultsportloisir,
-    MIN(b.pop2021::int4)* 1.4487 AS pop2021_id,
+    AVG(replace(b.acp_sociale, ',', '.')::numeric)::real AS acp_sociale,
+    AVG(replace(b.acp_econo, ',', '.')::numeric)::real AS acp_econo,
+    AVG(replace(b.acp_environn, ',', '.')::numeric)::real AS acp_enviro,
+    AVG(replace(b.acp_securité, ',', '.')::numeric)::real AS acp_securite,
+    AVG(replace(b.acp_proximité, ',', '.')::numeric)::real AS acp_proximite,
+    AVG(replace(b.acp_cultsportloisir, ',', '.')::numeric)::real AS acp_cultsportloisir,
+    MIN(b.idpop_2021::int4)* 1.4487 AS pop2021_id,
     a.geom
 	FROM sdis.ilots_hex_200m a
 	LEFT JOIN sdis.indice_emv_ilots_data b ON st_intersects(a.geom, b.geom)

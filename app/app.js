@@ -26,13 +26,16 @@ map.on("load", (e) => {
         "source": "hex_source",
         "source-layer": "sdis.sdis_results",
         "paint": {
-            "fill-color": [
-                "step",
-                  ["to-number", ["get","indice_emv"]],
-                "#d1eeea",  // First color when the sum is less than 2
-                2, "#68abb8",  // Second color when the sum is between 2 and 3
-                4, "#2a5674"  // Third color when the sum is 3.99 or greater
-              ],
+          "fill-outline-color": "transparent",
+            "fill-color": {
+                'property': 'indice_emv',
+                'stops': [[0, '#d1eeea'], [6, '#2a5674']]
+                // "step",
+                //   ["to-number", ["get","indice_emv"]],
+                // "#d1eeea",  // First color when the sum is less than 2
+                // 2, "#68abb8",  // Second color when the sum is between 2 and 3
+                // 4, "#2a5674"  // Third color when the sum is 3.99 or greater
+            },
               //#009B9E,#42B7B9,#A7D3D4,#F1F1F1,#E4C1D9,#D691C1,#C75DAB
 
             //   "step",
@@ -99,7 +102,7 @@ map.on("load", (e) => {
         "source": "da_source",
         "source-layer": "sdis.indice_emv_data_da",
         paint: {
-            "fill-outline-color": "transparent",
+            "fill-outline-color": "grey",
             "fill-color": [
               "step",
               ["to-number", ["get","indice_emv"]],

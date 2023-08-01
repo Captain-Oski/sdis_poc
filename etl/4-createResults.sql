@@ -26,6 +26,7 @@ FROM (
         CASE WHEN NTILE(5) OVER (ORDER BY acp_cultsportloisir) IN (4, 5) THEN 1 ELSE 0 END AS acp_cultsportloisir,
         geom
     FROM sdis.indice_emv_hex_200m_result
+    WHERE pop2021_id is not null
 ) AS subquery
 );
 

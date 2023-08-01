@@ -29,8 +29,8 @@ app.get('/pop_data', (req, res) => {
 
    let query = `
     SELECT 
-    SUM(pop2021) AS total_population,
-    (SUM(pop2021) * 100.0 / (SELECT SUM(pop2021) FROM sdis.sdis_results)) AS percentage_of_total_population,
+    round(SUM(pop2021_id))  AS total_population,
+    (SUM(pop2021_id) * 100.0 / (SELECT SUM(pop2021_id) FROM sdis.sdis_results)) AS percentage_of_total_population,
     COUNT(*) AS total_entries_with_indice_emv_gte_4
     FROM sdis.sdis_results
     WHERE indice_emv >= 4.0 
