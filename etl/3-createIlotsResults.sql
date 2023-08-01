@@ -16,7 +16,7 @@ CREATE TABLE sdis.indice_emv_ilots_data AS
         FROM
             ilot_pip a
         LEFT JOIN 
-            sdis.indice_emv_data b
+            sdis.da_data b
         ON
         a.adidu::integer = b.adidu::integer
     ) 

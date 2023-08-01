@@ -19,8 +19,8 @@ CREATE INDEX pip_ilot_grid_geom_idx ON sdis.ilot_grid  USING GIST (geom);
 ------------------REFERENCE HEXGRID 200m-----------------------------
 ------------------------------------------------------------------
 
-DROP TABLE IF EXISTS sdis.indice_emv_hex_200m;
-CREATE TABLE sdis.indice_emv_hex_200m AS (
+DROP TABLE IF EXISTS sdis.ilots_hex_200m;
+CREATE TABLE sdis.ilots_hex_200m AS (
 SELECT row_number() over () as id, ilot_grid.*, hex.geom as shape
 FROM
     sdis.ilot_grid
@@ -30,11 +30,11 @@ WHERE
     ST_Intersects(ilot_grid.geom, hex.geom)
   );
 
-ALTER TABLE sdis.indice_emv_hex_200m DROP COLUMN geom;
-ALTER TABLE sdis.indice_emv_hex_200m RENAME COLUMN shape TO geom;
+ALTER TABLE sdis.ilots_hex_200m DROP COLUMN geom;
+ALTER TABLE sdis.ilots_hex_200m RENAME COLUMN shape TO geom;
 
-ALTER TABLE sdis.indice_emv_hex_200m
+ALTER TABLE sdis.ilots_hex_200m
   ALTER COLUMN geom TYPE geometry(POLYGON, 3857)
     USING ST_SetSRID(geom,3857);
     
-CREATE INDEX pip_hex_200_geom_idx ON sdis.indice_emv_hex_200m  USING GIST (geom);
+CREATE INDEX pip_hex_200_geom_idx ON sdis.ilots_hex_200m  USING GIST (geom);
