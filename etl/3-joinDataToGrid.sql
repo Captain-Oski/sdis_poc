@@ -9,7 +9,7 @@ WITH temp as (
     ROUND(AVG(replace(b.acp_securité, ',', '.')::numeric), 2)::real AS acp_securite,
     ROUND(AVG(replace(b.acp_proximité, ',', '.')::numeric), 2)::real AS acp_proximite,
     ROUND(AVG(replace(b.acp_cultsportloisir, ',', '.')::numeric), 2)::real AS acp_cultsportloisir,
-    MIN(idpop_2021::int4)* 1.4487 AS pop2021_id,
+    MIN(b.pop2021::int4)* 1.4487 AS pop2021_id,
     a.geom
 	FROM sdis.ilots_hex_200m a
 	LEFT JOIN sdis.indice_emv_ilots_data b ON st_intersects(a.geom, b.geom)

@@ -33,4 +33,8 @@ CREATE TABLE sdis.indice_emv_ilots_data AS
 
 
 
-
+ALTER TABLE sdis.indice_emv_ilots_data
+  ALTER COLUMN geom TYPE geometry(POINT, 3857)
+    USING ST_SetSRID(geom,3857);
+    
+CREATE INDEX indice_emv_ilots_data_geom_idx ON sdis.indice_emv_ilots_data  USING GIST (geom);
