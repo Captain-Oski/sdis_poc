@@ -25,7 +25,7 @@ map.on("load", (e) => {
         "type": "fill",
         "source": "hex_source",
         "source-layer": "sdis.sdis_results",
-        "filter": ['>=', ['get', 'indice_emv'], 4],
+        // "filter": ['>=', ['get', 'indice_emv'], 4],
         "paint": {
           "fill-outline-color": "transparent",
             "fill-color": 
@@ -161,8 +161,27 @@ map.on("load", (e) => {
             });
     }) 
    
+    // read the filters after is loaded
+    updateIndexesFilters();
 })
 
+map.on("idle", function() {
+    fetchPopData();
+    fetchIndexData()
+});
+
+function toggleLayerVisibility(layerId) {
+    var layer = map.getLayer(layerId);
+    activeLayer = layerId
+    if (layer) {
+      var visibility = map.getLayoutProperty(layerId, "visibility");
+      if (visibility === "visible") {
+        map.setLayoutProperty(layerId, "visibility", "none");
+      } else {
+        map.setLayoutProperty(layerId, "visibility", "visible");
+      }
+    }
+  }
 async function fetchPopData() {
   const arr = MapFiltersStore.getFilter('nom') ? MapFiltersStore.getFilter('nom') : null
   try {
@@ -175,8 +194,7 @@ async function fetchPopData() {
     console.error('Erreur lors de la récupération des données', error);
     // Gérez l'erreur ici
   }
-}
-
+  }
 async function fetchIndexData() {
   const index = [];
 
@@ -204,26 +222,6 @@ async function fetchIndexData() {
     console.error('Erreur lors de la récupération des données', error);
     // Gérez l'erreur ici
   }
-}
-
-map.on("idle", function() {
-    fetchPopData();
-    fetchIndexData()
-
-});
-
-function toggleLayerVisibility(layerId) {
-    var layer = map.getLayer(layerId);
-    activeLayer = layerId
-    if (layer) {
-      var visibility = map.getLayoutProperty(layerId, "visibility");
-      if (visibility === "visible") {
-        map.setLayoutProperty(layerId, "visibility", "none");
-      } else {
-        map.setLayoutProperty(layerId, "visibility", "visible");
-      }
-    }
   }
 
 
-  

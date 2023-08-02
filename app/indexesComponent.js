@@ -47,15 +47,7 @@ function renderLegendComponents() {
     container.appendChild(legend1);
     container.appendChild(legend2);
     container.appendChild(legend3);
-
-    // // // // // // //
-    // TODO :  Gros HACK pour pousser le filtre dans le store ! P-e modifier ? 
-    window.addEventListener('load', function () {
-      updateIndexesFilters();
-    });
-    // // // // // // //
-
-    
+   
     // Event handlers for filter buttons
     document.getElementById('legend1').addEventListener('change', function () {
       filterValues.lessThan2 = !filterValues.lessThan2;
