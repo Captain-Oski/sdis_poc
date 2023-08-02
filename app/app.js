@@ -25,12 +25,22 @@ map.on("load", (e) => {
         "type": "fill",
         "source": "hex_source",
         "source-layer": "sdis.sdis_results",
+        "filter": ['>=', ['get', 'indice_emv'], 4],
         "paint": {
           "fill-outline-color": "transparent",
             "fill-color": 
             {
-                'property': 'indice_emv',
-                'stops': [[0, '#d1eeea'], [6, '#2a5674']]
+              'property': 'indice_emv',
+              'stops': [
+                [0, '#d1eeea'],
+                [1, '#d1eeea'], 
+                [2, '#d1eeea'], 
+                [3, '#68abb8'],
+                [4, '#4f90a6'],
+                [5, '#3b738f'],
+                [6, '#2a5674']
+              ]
+              //#d1eeea,#a8dbd9,#85c4c9,#68abb8,#4f90a6,#3b738f,#2a5674
             },
 
             // TODO : Créer la fonction qui s'occupe d'ajouter et retirer les variables de l'équation et qui retire 1 à chaque fois

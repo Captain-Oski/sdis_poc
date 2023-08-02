@@ -22,7 +22,6 @@ function updateIndexesFilters() {
   MapFiltersStore.clearFilter('indice_emv')
 
   if (filterValues.lessThan2) {
-    // MapFiltersStore.addFilter('indice_emv',['<', ['get', 'indice_emv'], 2])
     filters.push(['<=', ['to-number',['get', 'indice_emv']], 2]);
   }
 

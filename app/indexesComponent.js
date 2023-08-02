@@ -1,7 +1,7 @@
 
 var filterValues = {
-  lessThan2: true,
-  between2And3: true,
+  lessThan2: false,
+  between2And3: false,
   greaterThan4: true
 };
 
@@ -35,12 +35,12 @@ function createLegendComponent(id, text, checked, boxClass) {
   }
   
   // Fonction pour ajouter les composants au conteneur
-  function renderLegendComponents() {
+function renderLegendComponents() {
     const container = document.getElementById('indexesComponent');
   
     // Créer les composants en utilisant la fonction createLegendComponent
-    const legend1 = createLegendComponent('legend1', 'Non vulnérable (0,1,2)', true, 'legend1');
-    const legend2 = createLegendComponent('legend2', 'Vulnérable non prioritaire (3)', true, 'legend2');
+    const legend1 = createLegendComponent('legend1', 'Non vulnérable (0,1,2)', false, 'legend1');
+    const legend2 = createLegendComponent('legend2', 'Vulnérable non prioritaire (3)', false, 'legend2');
     const legend3 = createLegendComponent('legend3', 'Vulnérable et prioritaire (4,5,6)', true, 'legend3');
   
     // Ajouter les composants au conteneur
@@ -48,23 +48,31 @@ function createLegendComponent(id, text, checked, boxClass) {
     container.appendChild(legend2);
     container.appendChild(legend3);
 
+    // // // // // // //
+    // TODO :  Gros HACK pour pousser le filtre dans le store ! P-e modifier ? 
+    window.addEventListener('load', function () {
+      updateIndexesFilters();
+    });
+    // // // // // // //
+
+    
     // Event handlers for filter buttons
-document.getElementById('legend1').addEventListener('change', function () {
-  filterValues.lessThan2 = !filterValues.lessThan2;
-  updateIndexesFilters();
-});
+    document.getElementById('legend1').addEventListener('change', function () {
+      filterValues.lessThan2 = !filterValues.lessThan2;
+      updateIndexesFilters();
+    });
 
-document.getElementById('legend2').addEventListener('change', function () {
-  filterValues.between2And3 = !filterValues.between2And3;
-  updateIndexesFilters();
-});
+    document.getElementById('legend2').addEventListener('change', function () {
+      filterValues.between2And3 = !filterValues.between2And3;
+      updateIndexesFilters();
+    });
 
-document.getElementById('legend3').addEventListener('change', function () {
-  filterValues.greaterThan4 = !filterValues.greaterThan4;
-  updateIndexesFilters();
-});
+    document.getElementById('legend3').addEventListener('change', function () {
+      filterValues.greaterThan4 = !filterValues.greaterThan4;
+      updateIndexesFilters();
+    });
 
-  }
+}
 
 
   
