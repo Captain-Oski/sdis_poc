@@ -38,6 +38,7 @@
     <h4 id="qty"></h4>
   </div>
   <div id="kpis">
+    <p class="h3"> Répartition des vulnérabilités </p> 
     <span class="h4" id="acp_proximite"> </span> | 
     <span class="h4" id="acp_econo"> </span> | 
     <span class="h4" id="acp_enviro"> </span> | 
@@ -60,7 +61,7 @@
               Transformation des indices en quintiles par dimensions
             </li>
             <li class="h7">
-              L’indice d’équité des milieux de vie est obtenu par la sommes des scores obtenus ( 0 ou 1) et agrégé pour donner un score entre 0 et 6
+              L’indice d’équité des milieux de vie est obtenu par la sommes des scores obtenus (0 ou 1) et agrégé pour donner un score entre 0 et 6
             </li>
             <li class="h7">
               Un score de 6 est un secteur à la vulnérabilité maximale
@@ -111,43 +112,6 @@
           </div>
 
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                <div class="h4">Vulnérabilités <i>(inactif)</i></div>  
-              </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                
-                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="cultureSportsLoisirsCheckbox" value="acp_cultsportloisir" checked>
-                  <label class="form-check-label" for="cultureSportsLoisirsCheckbox">Culture, Sports et Loisirs</label>
-                </div>
-                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="ressourcesProximiteCheckbox" value="acp_proximite" checked>
-                  <label class="form-check-label" for="ressourcesProximiteCheckbox">Ressources de proximité</label>
-                </div>
-                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="securiteUrbaineCheckbox" value="acp_securite" checked>
-                  <label class="form-check-label" for="securiteUrbaineCheckbox">Sécurité Urbaine</label>
-                </div>
-                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="environnementalCheckbox" value="acp_enviro" checked>
-                  <label class="form-check-label" for="environnementalCheckbox">Environnemental</label>
-                </div>
-                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="economiqueCheckbox" value="acp_econo" checked>
-                  <label class="form-check-label" for="economiqueCheckbox">Économique</label>
-                </div>
-                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="socialCheckbox" value="acp_sociale" checked>
-                  <label class="form-check-label" for="socialCheckbox">Social</label>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
             <h2 class="accordion-header" id="headingThree">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                 <div class="h4">Filtrer par arrondissement</div>  
@@ -157,33 +121,6 @@
               <div class="accordion-body">
                 <div id="dynamicComponentsContainer"></div>
    
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="heading4">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                <div class="h4">Méthode comparative <i>(inactif)</i></div> 
-              </button>
-            </h2>
-            <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                  <label class="form-check-labe h5" for="exampleRadios1">
-                    Île de Montréal
-                  </label>
-                  <p class="mt-2">La comparaison statisique est faite en fonciton de tous les hexagones de l’Île</p>
-
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                  <label class="form-check-label h5" for="exampleRadios2">
-                    Arrondissements sélectionnés
-                  </label>
-                  <p class="mt-2">La comparaison statisique est faite en fonction de la sommes des scores des hexagones dans les arrondissements sélectionnés</p>
-                </div>
               </div>
             </div>
           </div>
@@ -232,13 +169,114 @@
               <div class="accordion-body">
               
                 <div class="form-check">
-                  <label for="opacitySlider">Transparence de la couche: <output id="num">1</output> </label>
+                  <label for="opacitySlider">Opacité de la couche: <output id="num">1</output> </label>
                   <input type="range" class="form-range" id="opacitySlider" min="0" max="1" step="0.1" value="1" oninput="num.value = this.value"> </div></input>
                   
                 </div>
 
               </div>
             </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <div class="h4">Vulnérabilités <i>(inactif)</i></div>  
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="cultureSportsLoisirsCheckbox" value="acp_cultsportloisir" checked>
+                    <label class="form-check-label" for="cultureSportsLoisirsCheckbox">Culture, Sports et Loisirs</label>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="ressourcesProximiteCheckbox" value="acp_proximite" checked>
+                    <label class="form-check-label" for="ressourcesProximiteCheckbox">Ressources de proximité</label>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="securiteUrbaineCheckbox" value="acp_securite" checked>
+                    <label class="form-check-label" for="securiteUrbaineCheckbox">Sécurité Urbaine</label>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="environnementalCheckbox" value="acp_enviro" checked>
+                    <label class="form-check-label" for="environnementalCheckbox">Environnemental</label>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="economiqueCheckbox" value="acp_econo" checked>
+                    <label class="form-check-label" for="economiqueCheckbox">Économique</label>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="socialCheckbox" value="acp_sociale" checked>
+                    <label class="form-check-label" for="socialCheckbox">Social</label>
+                  </div>
+                </div>
+              </div>
+            </div>   
+            
+            
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading4">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                  <div class="h4">Méthode comparative <i>(inactif)</i></div> 
+                </button>
+              </h2>
+              <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                    <label class="form-check-labe h5" for="exampleRadios1">
+                      Île de Montréal
+                    </label>
+                    <p class="mt-2">La comparaison statisique est faite en fonciton de tous les hexagones de l’Île</p>
+  
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                    <label class="form-check-label h5" for="exampleRadios2">
+                      Arrondissements sélectionnés
+                    </label>
+                    <p class="mt-2">La comparaison statisique est faite en fonction de la sommes des scores des hexagones dans les arrondissements sélectionnés</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+<!-- 
+
+            <div class="container mb-3" id="Title">
+              <h2 class="mb-3" >  Description de l’indice  </h2>
+              <p class="h7"> 
+    L'indice d’équité des milieux de vie est un indice territorial qui vise à localiser les milieux de vie cumulant des vulnérabilités urbaines afin de susciter la priorisation et la convergence des investissements municipaux. Cet indice représente les milieux qui cumulent les vulnérabilités sociales, économiques, environnementales, d'accès aux ressources de proximité, d'accès aux ressources de culture, sport et loisir et sécurité urbaine.
+    </p>
+    <h2 class="mb-3" >  Utilisation de l’indice </h2>
+    Le seuil de 4 vulnérabilités représente le seuil minimal, ainsi seules les aires de diffusion cumulant au moins 4 vulnérabilités doivent être conservées pour prioriser les interventions et investissements municipaux.
+    L’indice d’équité des milieux de vie n'est pas destiné à être utilisé seul, Il doit être complété par des données et des informations supplémentaires nécessaires à la prise de décision.
+    L'indice d’équité des milieux de vie est une mesure relative. Par conséquent, il ne peut pas être utilisé pour mesurer le progrès ou la performance d’un territoire sur une ou l’ensemble des dimensions de l’indice.
+    L’utilisation de l’indice d’équité des milieux de vie à des fins de répartition budgétaire est fortement déconseillée. Il est plutôt recommandé de réserver l'usage de l’indice d’équité des milieux de vie, et de toutes autres mesures comparatives, à des scénarios de bonification budgétaire.
+    
+              </p>
+              <ul>
+                <li class="h7">
+                  Transformation des indices en quintiles par dimensions
+                </li>
+                <li class="h7">
+                  L’indice d’équité des milieux de vie est obtenu par la sommes des scores obtenus ( 0 ou 1) et agrégé pour donner un score entre 0 et 6
+                </li>
+                <li class="h7">
+                  Un score de 6 est un secteur à la vulnérabilité maximale
+                </li>
+               </ul> 
+            </div> -->
+          
+
+
+
+
+
+
+
+
           </div>
 
         </div>

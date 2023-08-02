@@ -157,8 +157,8 @@ async function fetchPopData() {
   const arr = MapFiltersStore.getFilter('nom') ? MapFiltersStore.getFilter('nom') : null
   try {
     const data = await getPopData(arr); // Remplacez 'Anjou,Lachine' par votre liste de mots
-    document.getElementById("pop2021").innerHTML = `Population estimées des aires de vulnérabilités : ${data[0].total_population}`;
-    document.getElementById("pop2021Pct").innerHTML = `Pourcentage de la population estimées vivant dans ces aires : ${Math.round(data[0].percentage_of_total_population)}%`;
+    document.getElementById("pop2021").innerHTML = `Population estimée des zones vulnérables : ${data[0].total_population}`;
+    document.getElementById("pop2021Pct").innerHTML = `Pourcentage de la population estimée vivant dans ces zones : ${Math.round(data[0].percentage_of_total_population)}%`;
     document.getElementById("qty").innerHTML = `Qté d'hexagones vulnérables : ${data[0].total_entries_with_indice_emv_gte_4}`;
     // Faites quelque chose avec les données ici
   } catch (error) {
@@ -171,14 +171,13 @@ async function fetchIndexData() {
   
   const arr = MapFiltersStore.getFilter('nom') ? MapFiltersStore.getFilter('nom') : null
   try {
-    const data = await getIndexPct(arr); // Remplacez 'Anjou,Lachine' par votre liste de mots
-    document.getElementById("acp_sociale").innerHTML = `Social : ${Math.round(data[0].percentage_of_total_acp_sociale)} %`
+    const data = await getIndexPct(arr);
+    document.getElementById("acp_sociale").innerHTML = `Sociale : ${Math.round(data[0].percentage_of_total_acp_sociale)} %`
     document.getElementById("acp_econo").innerHTML = `Économique : ${Math.round(data[0].percentage_of_total_acp_econo)}%`
-    document.getElementById("acp_enviro").innerHTML = `Environnemental : ${Math.round(data[0].percentage_of_total_acp_enviro)}%`
+    document.getElementById("acp_enviro").innerHTML = `Environnementale : ${Math.round(data[0].percentage_of_total_acp_enviro)}%`
     document.getElementById("acp_securite").innerHTML = `Sécurité : ${Math.round(data[0].percentage_of_total_acp_securite)}%`
     document.getElementById("acp_cultsportloisir").innerHTML = `Culture, sport et loisir : ${Math.round(data[0].percentage_of_total_acp_cultsportloisir)}%`
     document.getElementById("acp_proximite").innerHTML = `Proximité : ${Math.round(data[0].percentage_of_total_acp_proximite)}%`
-    // Faites quelque chose avec les données ici
   } catch (error) {
     console.error('Erreur lors de la récupération des données', error);
     // Gérez l'erreur ici
