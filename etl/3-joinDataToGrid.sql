@@ -3,12 +3,12 @@ DROP TABLE IF EXISTS sdis.indice_emv_hex_200m_result;
 create table sdis.indice_emv_hex_200m_result as 
 WITH temp as (
   select
-    AVG(replace(b.acp_sociale, ',', '.')::numeric)::real AS acp_sociale,
-    AVG(replace(b.acp_econo, ',', '.')::numeric)::real AS acp_econo,
-    AVG(replace(b.acp_environn, ',', '.')::numeric)::real AS acp_enviro,
-    AVG(replace(b.acp_securité, ',', '.')::numeric)::real AS acp_securite,
-    AVG(replace(b.acp_proximité, ',', '.')::numeric)::real AS acp_proximite,
-    AVG(replace(b.acp_cultsportloisir, ',', '.')::numeric)::real AS acp_cultsportloisir,
+    AVG(b.acp_sociale::numeric)::real AS acp_sociale,
+    AVG(b.acp_econo::numeric)::real AS acp_econo,
+    AVG(b.acp_environn::numeric)::real AS acp_enviro,
+    AVG(b.acp_securité::numeric)::real AS acp_securite,
+    AVG(b.acp_proximité::numeric)::real AS acp_proximite,
+    AVG(b.acp_cultsportloisir::numeric)::real AS acp_cultsportloisir,
     MIN(b.idpop_2021::int4)* 1.4487 AS pop2021_id,
     a.geom
 	FROM sdis.ilots_hex_200m a

@@ -4,7 +4,6 @@ select
 b.adidu,
 b.arr_ville,
 b.pop2021,
-b.logpriv2021,
 b.acp_sociale_2quintiles as acp_sociale,
 b.acp_econo_2quintiles as acp_econo,
 b.acp_enviro_2quintiles as acp_enviro,

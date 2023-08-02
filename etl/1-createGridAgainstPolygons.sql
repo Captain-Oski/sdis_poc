@@ -1,4 +1,3 @@
-
 ------------------------------------------------------------------
 ------------------REFERENCE ILOT UNION-----------------------------
 ------------------------------------------------------------------
@@ -12,8 +11,6 @@ WHERE idpop_2021 > 0 and caractéri = 'Arrondissement de Montréal';
     USING ST_SetSRID(geom,3857);
     
 CREATE INDEX pip_ilot_grid_geom_idx ON sdis.ilot_grid  USING GIST (geom);
-
-
 
 ------------------------------------------------------------------
 ------------------REFERENCE HEXGRID 200m-----------------------------

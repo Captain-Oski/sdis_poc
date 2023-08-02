@@ -1,3 +1,6 @@
+------------------------------------------------------------------
+------------------REFERENCE indice_emv_ilots_data-----------------------------
+------------------------------------------------------------------
 DROP TABLE IF EXISTS sdis.indice_emv_ilots_data;
 CREATE TABLE sdis.indice_emv_ilots_data AS 
     WITH 
