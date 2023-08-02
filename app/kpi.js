@@ -11,7 +11,6 @@
       apiUrl += `&index=${index.join(',')}`;
     }
   
-    console.log(apiUrl)
     try {
       const response = await fetch(apiUrl);
       if (!response.ok) {

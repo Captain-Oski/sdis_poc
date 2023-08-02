@@ -48,7 +48,6 @@ const MapFiltersStore = {
     // Méthode pour obtenir le filtre actuel pour un item spécifique
     getFilter: function (filterType) {
       if (this.filters.hasOwnProperty(filterType)) {
-        console.log([...new Set(this.filters[filterType])])
         return [...new Set(this.filters[filterType])];
       }
       return null;

@@ -179,7 +179,7 @@ async function fetchIndexData() {
   if (filterValues.greaterThan4) {
     index.push(4, 5, 6);
   }
-  console.log(index)
+
   const arr = MapFiltersStore.getFilter('nom') ? MapFiltersStore.getFilter('nom') : null
 
   try {
@@ -196,20 +196,17 @@ async function fetchIndexData() {
   }
 }
 
-
 map.on("idle", function() {
     fetchPopData();
     fetchIndexData()
 
 });
 
-
 function toggleLayerVisibility(layerId) {
     var layer = map.getLayer(layerId);
     activeLayer = layerId
     if (layer) {
       var visibility = map.getLayoutProperty(layerId, "visibility");
-      
       if (visibility === "visible") {
         map.setLayoutProperty(layerId, "visibility", "none");
       } else {

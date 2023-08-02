@@ -35,7 +35,8 @@ function updateIndexesFilters() {
   }
 
   MapFiltersStore.addFilter('indice_emv',['any'].concat(filters))
-  MapFiltersStore.executeFilter(activeLayer)
+  MapFiltersStore.executeFilter('hex_data')
+  MapFiltersStore.executeFilter('da_data')
 }
 
 

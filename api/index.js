@@ -81,7 +81,7 @@ app.get('/index_pct', (req, res) => {
   `;
 
   if (index) {
-    query += ` AND indice_emv IN (${index});`;
+    query += ` AND indice_emv IN (${index})`;
   }
 
   if (arr) {
@@ -89,6 +89,7 @@ app.get('/index_pct', (req, res) => {
     const placeholders = arrValues.map((_, index) => `$${index + 1}`);
     query += ` AND nom IN (${placeholders.join(', ')});`;
 
+    console.log(query)
     // Execute the query with the array values as parameters
     pool.query(query, arrValues, (err, result) => {
       if (err) {
