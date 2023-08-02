@@ -168,10 +168,22 @@ async function fetchPopData() {
 }
 
 async function fetchIndexData() {
-  
+  const index = [];
+
+  if (filterValues.lessThan2) {
+    index.push(0,1,2);
+  }
+  if (filterValues.between2And3) {
+    index.push(3);
+  }
+  if (filterValues.greaterThan4) {
+    index.push(4, 5, 6);
+  }
+  console.log(index)
   const arr = MapFiltersStore.getFilter('nom') ? MapFiltersStore.getFilter('nom') : null
+
   try {
-    const data = await getIndexPct(arr);
+    const data = await getIndexPct(arr,index);
     document.getElementById("acp_sociale").innerHTML = `Sociale : ${Math.round(data[0].percentage_of_total_acp_sociale)} %`
     document.getElementById("acp_econo").innerHTML = `Économique : ${Math.round(data[0].percentage_of_total_acp_econo)}%`
     document.getElementById("acp_enviro").innerHTML = `Environnementale : ${Math.round(data[0].percentage_of_total_acp_enviro)}%`

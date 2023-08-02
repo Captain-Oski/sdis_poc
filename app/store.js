@@ -48,6 +48,7 @@ const MapFiltersStore = {
     // Méthode pour obtenir le filtre actuel pour un item spécifique
     getFilter: function (filterType) {
       if (this.filters.hasOwnProperty(filterType)) {
+        console.log([...new Set(this.filters[filterType])])
         return [...new Set(this.filters[filterType])];
       }
       return null;
@@ -101,36 +102,8 @@ const MapFiltersStore = {
 
      executeFilter: function (layerId) {
       const finalFilter = MapFiltersStore.buildAllFilter();
-      console.log(finalFilter)
+      
       map.setFilter(layerId, finalFilter);
     }
 
   };
-
-  // [
-  //   'all',
-  //   ['==', 'acp_sociale', null],
-  //   ['==', 'acp_econo', null],
-  //   ['==', 'acp_enviro', null],
-  //   ['==', 'acp_securite', null],
-  //   ['==', 'acp_proximite', null],
-  //   ['==', 'acp_cultsportloisir', null],
-  //   ['==', 'indice_emv', null],
-  //   ['==', 'arr_vll', null],
-  // ]
-
-
-  
-  // // Exemples d'utilisation du MapFiltersStore
-  // MapFiltersStore.addFilter('filter1', ['==', 'property', 'value']);
-  // MapFiltersStore.addFilter('filter2', ['>', 'another_property', 100]);
-  // console.log(MapFiltersStore.getAllFilters());
-  
-  // MapFiltersStore.updateFilter('filter1', ['!=', 'property', 'new_value']);
-  // console.log(MapFiltersStore.getFilter('filter1'));
-  
-  // MapFiltersStore.removeFilter('filter2');
-  // console.log(MapFiltersStore.getAllFilters());
-  
-  // MapFiltersStore.clearAllFilters();
-  // console.log(MapFiltersStore.getAllFilters());

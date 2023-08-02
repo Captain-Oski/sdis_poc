@@ -6,6 +6,7 @@ var filterValues = {
 };
 
 
+
 // Fonction pour créer le composant HTML
 function createLegendComponent(id, text, checked, boxClass) {
     const div = document.createElement('div');

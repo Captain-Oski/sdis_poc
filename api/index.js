@@ -66,7 +66,7 @@ app.get('/pop_data', (req, res) => {
 
 app.get('/index_pct', (req, res) => {
   const arr = req.query.arr;
-  console.log(arr);
+  const index = req.query.index;
 
   let query = `
     SELECT 
@@ -77,8 +77,12 @@ app.get('/index_pct', (req, res) => {
       (SUM(acp_proximite) * 100.0 / SUM(indice_emv)) AS percentage_of_total_acp_proximite,
       (SUM(acp_cultsportloisir) * 100.0 / SUM(indice_emv)) AS percentage_of_total_acp_cultsportloisir
     FROM sdis.sdis_results
-    WHERE indice_emv >= 4.0 
+    WHERE 1=1 
   `;
+
+  if (index) {
+    query += ` AND indice_emv IN (${index});`;
+  }
 
   if (arr) {
     const arrValues = arr.split(',');
