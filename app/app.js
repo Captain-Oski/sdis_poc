@@ -52,10 +52,10 @@ map.on("load", (e) => {
                         
             "fill-opacity": 1
           },
-          "layout": {
-            // Make the layer visible by default.
-            "visibility": "visible"
-            }
+        "layout": {
+          // Make the layer visible by default.
+          "visibility": "visible"
+          }
     });
 
     map.addSource("da_source", {

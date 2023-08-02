@@ -1,12 +1,7 @@
 const MapFiltersStore = {
 
     'filters': {
-      'acp_sociale': [],
-      'acp_econo': [],
-      'cp_enviro': [],
-      'acp_securite': [],
-      'acp_proximite': [],
-      'acp_cultsportloisir': [],
+      'vulnerabilities': [],
       'indice_emv': [],
       'nom': [],
     },
@@ -57,12 +52,7 @@ const MapFiltersStore = {
     clearAllFilters: function () {
       this.filters = 
         {  
-          'acp_sociale': [],
-          'acp_econo': [],
-          'cp_enviro': [],
-          'acp_securite': [],
-          'acp_proximite': [],
-          'acp_cultsportloisir': [],
+          'vulnerabilities': [],
           'indice_emv': [],
           'nom': [],
         };
@@ -85,9 +75,11 @@ const MapFiltersStore = {
           else if (filterValues.length  && filter == 'indice_emv') {
             individualFilters.push(...filterValues)
           } 
-          else if (filterValues.length  && filter.includes('acp_')) {
-            // TODO reprendre ici pour creer la mecanique de filtre pour les acp
-            individualFilters.push(...filterValues)
+          else if (filterValues.length  && filter == 'vulnerabilities') {
+            const filterAll = ["all"]
+            const filterArray = [...filterValues]
+            filterArray[0].forEach((attribute) => filterAll.push(["!=", ["get", attribute], 1]))
+            individualFilters.push(filterAll);
           } 
           else {
             MapFiltersStore.clearFilter(filter)
@@ -101,7 +93,6 @@ const MapFiltersStore = {
 
      executeFilter: function (layerId) {
       const finalFilter = MapFiltersStore.buildAllFilter();
-      
       map.setFilter(layerId, finalFilter);
     }
 

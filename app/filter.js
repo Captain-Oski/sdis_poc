@@ -40,19 +40,6 @@ function updateIndexesFilters() {
 }
 
 
-// Function to Update Fill Color Property
-function updateVulnerabilities(variables) {
-
-    const expressions = ["step"];
-      for (const variable of variables) {
-        expressions.push(["+", ["to-number", ["get", variable]]]);
-      }
-      expressions.push("#d1eeea", 2, "#68abb8", 3, "#2a5674");
-
-      map.setPaintProperty('YOUR_LAYER_ID', 'fill-color', expressions);
-}
-
-
 const radioButtons = document.querySelectorAll('.repRadios');
 
 radioButtons.forEach(button => {
@@ -61,4 +48,28 @@ radioButtons.forEach(button => {
     toggleLayerVisibility('da_data')
   });
 });
+
+const checkboxes = document.querySelectorAll('input[type="checkbox"][role="switch"]');
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", () => {
+      updateMapboxLayerFilter()
+    });
+  });
+
+function updateMapboxLayerFilter() {
+  MapFiltersStore.clearFilter('vulnerabilities')
+  const checkboxes = document.querySelectorAll('input[type="checkbox"][role="switch"]');
+  const filterValues = Array.from(checkboxes).filter((checkbox) => !checkbox.checked) // Get only the checked checkboxes
+  .map((checkbox) => checkbox.value); // Extract the values (property names) from the checked checkboxes
+
+  if(filterValues.length) {
+    MapFiltersStore.addFilter('vulnerabilities', filterValues)
+    MapFiltersStore.executeFilter('hex_data')
+    MapFiltersStore.executeFilter('da_data')
+  } 
+  else {
+    MapFiltersStore.executeFilter('hex_data')
+    MapFiltersStore.executeFilter('da_data')
+  }
+}
 
