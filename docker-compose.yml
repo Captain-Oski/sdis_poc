@@ -14,6 +14,8 @@ services:
     image: "pramsey/pg_tileserv:latest"
     ports:
     - 8801:7800
+    volumes:
+    - ./pg_featureserv.toml:/config/pg_featureserv.toml 
     environment:
     - DATABASE_URL=postgresql://admin_geo:password@pg/sdis
     depends_on:

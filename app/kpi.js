@@ -1,4 +1,4 @@
-  const api= `https://captain-oski-verbose-space-guacamole-57gr6w464427vq5-3000.preview.app.github.dev`
+  const api= `https://glowing-space-goggles-57gr6w46vpf45rq-3000.preview.app.github.dev`
 
   async function getIndexPct (arr,index) {
     let apiUrl = `${api}/index_pct`;
