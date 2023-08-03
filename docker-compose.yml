@@ -19,15 +19,15 @@ services:
     depends_on:
     - "pg"
     restart: always
-  pg_featureserv:
-    image: "pramsey/pg_featureserv:latest"
-    ports:
-    - 9000:9000
-    environment:
-    - DATABASE_URL=postgresql://admin_geo:password@pg/sdis
-    depends_on:
-    - "pg"
-    restart: always
+  # pg_featureserv:
+  #   image: "pramsey/pg_featureserv:latest"
+  #   ports:
+  #   - 9000:9000
+  #   environment:
+  #   - DATABASE_URL=postgresql://admin_geo:password@pg/sdis
+  #   depends_on:
+  #   - "pg"
+  #   restart: always
   server-web:
     image: nginx
     ports:
