@@ -17,7 +17,7 @@ map.on("load", (e) => {
 
     map.addSource("hex_source", {
         "type": "vector",
-        "tiles": ["https://glowing-space-goggles-57gr6w46vpf45rq-8801.preview.app.github.dev/sdis.sdis_results/{z}/{x}/{y}.pbf"]
+        "tiles": ["https://glowing-goldfish-57gr6wxggp3vx66-8801.app.github.dev/sdis.sdis_results/{z}/{x}/{y}.pbf"]
     });
 
     map.addLayer({
@@ -70,7 +70,7 @@ map.on("load", (e) => {
 
     map.addSource("da_source", {
         "type": "vector",
-        "tiles": ["https://glowing-space-goggles-57gr6w46vpf45rq-8801.preview.app.github.dev/sdis.indice_emv_data_da/{z}/{x}/{y}.pbf"]
+        "tiles": ["https://glowing-goldfish-57gr6wxggp3vx66-8801.app.github.dev/sdis.indice_emv_data_da/{z}/{x}/{y}.pbf"]
     });
 
     map.addLayer({
