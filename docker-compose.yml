@@ -14,13 +14,20 @@ services:
     image: "pramsey/pg_tileserv:latest"
     ports:
     - 8801:7800
-    volumes:
-    - ./pg_featureserv.toml:/config/pg_featureserv.toml 
     environment:
     - DATABASE_URL=postgresql://admin_geo:password@pg/sdis
     depends_on:
     - "pg"
     restart: always
+  # pg_featureserv:
+  #   image: "pramsey/pg_featureserv:latest"
+  #   ports:
+  #   - 9000:9000
+  #   environment:
+  #   - DATABASE_URL=postgresql://admin_geo:password@pg/sdis
+  #   depends_on:
+  #   - "pg"
+  #   restart: always
   server-web:
     image: nginx
     ports:
@@ -44,7 +51,8 @@ services:
       ports:
         - "3000:3000"
       volumes:
-        - ./api:/usr/src/app
+        - ./api/index.js:/usr/src/app/index.js  # Spécifiez
+        - ./api/package.json:/usr/src/app/package.json
   ogr:  
     image: ghcr.io/osgeo/gdal:alpine-small-latest
     volumes:
