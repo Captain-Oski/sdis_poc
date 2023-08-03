@@ -1,4 +1,4 @@
-  const api= `https://glowing-goldfish-57gr6wxggp3vx66-3000.app.github.dev#`
+  const api= `https://glowing-goldfish-57gr6wxggp3vx66-3000.app.github.dev`
 
   async function getIndexPct (arr,index) {
     let apiUrl = `${api}/index_pct`;

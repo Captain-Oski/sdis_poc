@@ -53,8 +53,8 @@ services:
       ports:
         - "3000:3000"
       volumes:
-        - ./api/index.js:/usr/src/app/index.js  # Spécifiez
-        - ./api/package.json:/usr/src/app/package.json
+        volumes:
+        - ./api:/usr/src/app
   ogr:  
     image: ghcr.io/osgeo/gdal:alpine-small-latest
     volumes:

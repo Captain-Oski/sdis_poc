@@ -24,44 +24,57 @@ const pool = new Pool({
 
 // Route pour interroger les données
 app.get('/pop_data', (req, res) => {
-  const arr = req.query.arr; // Récupère les paramètres de requête nommés "motsCles" (Ex: /index_pct?motsCles=acp_sociale,acp_econo)
+  const arr = req.query.arr;
+  const method = req.query.method;
+
+  if (arr) {
+    var arrValues = arr.split(',');
+  }
+
+  // Helper function to generate the filter clause based on the provided array parameter
+  function getFilterClause(arr, method) {
+    if (!arr && !method) return ['',''];
+    
+    const placeholders = arrValues.map((_, index) => `$${index + 1}`);
+
+    if (method) {
+      // If method is provided, use null as the first parameter
+      return [` AND nom IN (${placeholders.join(', ')})`, ''];
+    } else if (arr) {
+      // If arr is provided, use regular filter with nom values
+      return ['', ` AND nom IN (${placeholders.join(', ')})`];
+    }
+
+    return ['', ''];
+  }
+
+  const filterClauses = getFilterClause(arr, method);
 
   let query = `
     SELECT 
       round(SUM(pop2021_id)) as total_population,
-      (SUM(pop2021_id) * 100.0 / (SELECT SUM(pop2021_id) FROM sdis.sdis_results)) AS percentage_of_total_population,
+      (SUM(pop2021_id) * 100.0 / (SELECT SUM(pop2021_id) FROM sdis.sdis_results
+      WHERE 1=1 ${filterClauses[0]};
+      )) AS percentage_of_total_population,
       COUNT(*) AS total_entries_with_indice_emv_gte_4
     FROM sdis.sdis_results
-    WHERE indice_emv >= 4.0 
+    WHERE indice_emv >= 4.0 ${filterClauses[1]}
   `;
 
-  if (arr) {
-    const arrValues = arr.split(',');
-    const placeholders = arrValues.map((_, index) => `$${index + 1}`);
-    query += ` AND nom IN (${placeholders.join(', ')});`;
-
-    // Execute the query with the array values as parameters
-    pool.query(query, arrValues, (err, result) => {
-      if (err) {
-        console.error('Erreur lors de l\'interrogation de la base de données', err);
-        return res.status(500).json({ error: 'Erreur lors de l\'interrogation de la base de données' });
-      }
-      // Renvoyer les données en format JSON
-      res.json(result.rows);
-    });
-  } else {
-    // Execute the query without parameters
-    pool.query(query, (err, result) => {
-      if (err) {
-        console.error('Erreur lors de l\'interrogation de la base de données', err);
-        return res.status(500).json({ error: 'Erreur lors de l\'interrogation de la base de données' });
-      }
-      // Renvoyer les données en format JSON
-      console.log(result.rows)
-      res.json(result.rows);
-    });
-  }
+  // Execute the query
+  pool.query(query, arrValues, (err, result) => {
+    if (err) {
+      console.error('Erreur lors de l\'interrogation de la base de données', err);
+      return res.status(500).json({ error: 'Erreur lors de l\'interrogation de la base de données' });
+    }
+    // Renvoyer les données en format JSON
+    console.log(result.rows)
+    res.json(result.rows);
+  });
 });
+
+
+
 
 
 app.get('/index_pct', (req, res) => {
@@ -99,6 +112,7 @@ app.get('/index_pct', (req, res) => {
       // Renvoyer les données en format JSON
       res.json(result.rows);
     });
+
   } else {
     // Execute the query without parameters
     pool.query(query, (err, result) => {
