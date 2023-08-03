@@ -5,8 +5,7 @@ FROM node:18
 WORKDIR /usr/src/app
 
 # Copiez les fichiers de l'application
-COPY api/package*.json ./
-COPY api/index.js ./
+COPY api/* ./
 
 # Installez les dépendances de l'application
 RUN npm install
@@ -15,4 +14,4 @@ RUN npm install
 EXPOSE 3000
 
 # Commande pour démarrer l'application
-CMD ["sh", "-c", "node index.js $DB_HOST"]
+CMD ["node", "index.js"]

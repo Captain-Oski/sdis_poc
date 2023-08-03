@@ -17,7 +17,7 @@ map.on("load", (e) => {
 
     map.addSource("hex_source", {
         "type": "vector",
-        "tiles": ["https://glowing-goldfish-57gr6wxggp3vx66-8801.app.github.dev/sdis.sdis_results/{z}/{x}/{y}.pbf"]
+        "tiles": ["https://symmetrical-bassoon-57gr6w4j99f7wpj-8801.app.github.dev/sdis.sdis_results/{z}/{x}/{y}.pbf"]
     });
 
     map.addLayer({
@@ -70,7 +70,7 @@ map.on("load", (e) => {
 
     map.addSource("da_source", {
         "type": "vector",
-        "tiles": ["https://glowing-goldfish-57gr6wxggp3vx66-8801.app.github.dev/sdis.indice_emv_data_da/{z}/{x}/{y}.pbf"]
+        "tiles": ["https://symmetrical-bassoon-57gr6w4j99f7wpj-8801.app.github.dev/sdis.indice_emv_data_da/{z}/{x}/{y}.pbf"]
     });
 
     map.addLayer({
