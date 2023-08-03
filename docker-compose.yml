@@ -53,7 +53,6 @@ services:
       ports:
         - "3000:3000"
       volumes:
-        volumes:
         - ./api:/usr/src/app
   ogr:  
     image: ghcr.io/osgeo/gdal:alpine-small-latest
