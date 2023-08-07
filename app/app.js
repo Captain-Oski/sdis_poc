@@ -17,7 +17,7 @@ map.on("load", (e) => {
 
     map.addSource("hex_source", {
         "type": "vector",
-        "tiles": ["https://symmetrical-bassoon-57gr6w4j99f7wpj-8801.app.github.dev/sdis.sdis_results/{z}/{x}/{y}.pbf"]
+        "tiles": ["https://bug-free-eureka-q574rw9r67hxpw9-8801.app.github.dev/sdis.sdis_results/{z}/{x}/{y}.pbf"]
     });
 
     map.addLayer({
@@ -70,7 +70,7 @@ map.on("load", (e) => {
 
     map.addSource("da_source", {
         "type": "vector",
-        "tiles": ["https://symmetrical-bassoon-57gr6w4j99f7wpj-8801.app.github.dev/sdis.indice_emv_data_da/{z}/{x}/{y}.pbf"]
+        "tiles": ["https://bug-free-eureka-q574rw9r67hxpw9-8801.app.github.dev/sdis.indice_emv_data_da/{z}/{x}/{y}.pbf"]
     });
 
     map.addLayer({
@@ -186,9 +186,9 @@ async function fetchPopData() {
   const arr = MapFiltersStore.getFilter('nom') ? MapFiltersStore.getFilter('nom') : null
   try {
     const data = await getPopData(arr); // Remplacez 'Anjou,Lachine' par votre liste de mots
-    document.getElementById("pop2021").innerHTML = `Population estimée des zones vulnérables : ${data[0].total_population}`;
-    document.getElementById("pop2021Pct").innerHTML = `Pourcentage de la population estimée vivant dans ces zones : ${Math.round(data[0].percentage_of_total_population)}%`;
-    document.getElementById("qty").innerHTML = `Qté d'hexagones vulnérables : ${data[0].total_entries_with_indice_emv_gte_4}`;
+    document.getElementById("pop2021").innerHTML = `Population estimée des zones vulnérables :  <b>${data[0].total_population}</b>`;
+    document.getElementById("pop2021Pct").innerHTML = `Pourcentage de la population estimée vivant dans ces zones :  <b>${Math.round(data[0].percentage_of_total_population)}%</b>`;
+    document.getElementById("qty").innerHTML = `Qté d'hexagones vulnérables :  <b>${data[0].total_entries_with_indice_emv_gte_4}</b>`;
     // Faites quelque chose avec les données ici
   } catch (error) {
     console.error('Erreur lors de la récupération des données', error);
@@ -212,12 +212,12 @@ async function fetchIndexData() {
 
   try {
     const data = await getIndexPct(arr,index);
-    document.getElementById("acp_sociale").innerHTML = `Sociale : ${Math.round(data[0].percentage_of_total_acp_sociale)} %`
-    document.getElementById("acp_econo").innerHTML = `Économique : ${Math.round(data[0].percentage_of_total_acp_econo)}%`
-    document.getElementById("acp_enviro").innerHTML = `Environnementale : ${Math.round(data[0].percentage_of_total_acp_enviro)}%`
-    document.getElementById("acp_securite").innerHTML = `Sécurité : ${Math.round(data[0].percentage_of_total_acp_securite)}%`
-    document.getElementById("acp_cultsportloisir").innerHTML = `Culture, sport et loisir : ${Math.round(data[0].percentage_of_total_acp_cultsportloisir)}%`
-    document.getElementById("acp_proximite").innerHTML = `Proximité : ${Math.round(data[0].percentage_of_total_acp_proximite)}%`
+    document.getElementById("acp_sociale").innerHTML = `Sociale : <b>${Math.round(data[0].percentage_of_total_acp_sociale)} % </b>`
+    document.getElementById("acp_econo").innerHTML = `Économique : <b>${Math.round(data[0].percentage_of_total_acp_econo)}% </b>`
+    document.getElementById("acp_enviro").innerHTML = `Environnementale : <b>${Math.round(data[0].percentage_of_total_acp_enviro)}% </b>`
+    document.getElementById("acp_securite").innerHTML = `Sécurité : <b>${Math.round(data[0].percentage_of_total_acp_securite)}% </b>`
+    document.getElementById("acp_cultsportloisir").innerHTML = `Culture, sport et loisir : <b>${Math.round(data[0].percentage_of_total_acp_cultsportloisir)}% </b>`
+    document.getElementById("acp_proximite").innerHTML = `Proximité : <b>${Math.round(data[0].percentage_of_total_acp_proximite)}% </b>`
   } catch (error) {
     console.error('Erreur lors de la récupération des données', error);
     // Gérez l'erreur ici

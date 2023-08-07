@@ -32,20 +32,7 @@
     </div> -->
 
   </nav>
-  <div id="infos">
-    <h4 id="pop2021"></h4>
-    <h4 id="pop2021Pct"></h4>
-    <h4 id="qty"></h4>
-  </div>
-  <div id="kpis">
-    <p class="h3"> Répartition des vulnérabilités</p> 
-    <span class="h4" id="acp_proximite"> </span> | 
-    <span class="h4" id="acp_econo"> </span> | 
-    <span class="h4" id="acp_enviro"> </span> | 
-    <span class="h4" id="acp_sociale"> </span> | 
-    <span class="h4" id="acp_cultsportloisir"> </span> | 
-    <span class="h4" id="acp_securite"> </span>
-  </div>
+
   <div id="map"></div>
 
   <main role="main" class="container">
@@ -280,8 +267,62 @@
           </div>
 
         </div>
-      </div>
     </div>
+
+    <div id="menuRight">
+      <div id="boite">
+
+        <!-- <div class="container mb-3" id="Title">
+          <h2 class="mb-3" >  Méthode d’agrégation  </h2>
+          <p class="h7"> Les 6 indices obtenus sont agrégés en un seul indice de la manière suivante : </p> 
+           <ul>
+            <li class="h7">
+              Transformation des indices en quintiles par dimensions
+            </li>
+            <li class="h7">
+              L’indice d’équité des milieux de vie est obtenu par la sommes des scores obtenus (0 ou 1) et agrégé pour donner un score entre 0 et 6
+            </li>
+            <li class="h7">
+              Un score de 6 est un secteur à la vulnérabilité maximale
+            </li>
+           </ul>
+        </div> -->
+
+        
+        <h3 class="h3 mb-3"> Information sur la population </h3> 
+
+        <div class="card  mb-3" >
+          <div class="card-body">
+            <h5 class="card-title">Population</h5>
+            <h6 class="card-subtitle mb-4 text-muted">Les % sont dynamiques en fonction des filtres de la carte</h6>
+            <p class="card-text" id="pop2021"></p>
+            <p class="card-text" id="pop2021Pct"></p>
+            <p class="card-text" id="qty"></p>
+            <!-- <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a> -->
+          </div>
+        </div>
+
+        
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Répartition des vulnérabilités </h5>
+            <h6 class="card-subtitle mb-4 text-muted">Les % sont dynamiques en fonction des filtres de la carte</h6>
+            <p class="card-text" id="acp_proximite"></p>
+            <p class="card-text" id="acp_enviro"></p>
+            <p class="card-text" id="acp_econo"></p>
+            <p class="card-text" id="acp_sociale"></p>
+            <p class="card-text" id="acp_cultsportloisir"></p>
+            <p class="card-text" id="acp_securite"></p>
+
+            <!-- <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a> -->
+          </div>
+        </div>
+
+
+
+      </div>
 
   </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

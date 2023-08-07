@@ -7,8 +7,8 @@ body {
     position: fixed;
     top: 4.5%;
     height: 95.5%;
-    width: 75%;
-    right: 0;
+    width: 50%;
+    right: 25%;
     overflow: unset;
     overflow-x: hidden;
 }
@@ -20,28 +20,19 @@ body {
     width: 25%;
 }
 
+#menuRight {
+  position: absolute;
+  top: 4.5%;
+  right: 0;
+  width: 25%;
+}
+
 
 #boite {
     margin: 10px;
     padding: 10px;
     background: ligthgrey;
 }
-
-#kpis {
-    z-index: 1000;
-    position: fixed;
-    /* top: 10.5%;*/
-    bottom: 3.5%; 
-    left: 35%;
-}
-
-#infos {
-    z-index: 1000;
-    position: fixed;
-    top: 6.5%;
-    left: 30%;
-}
-
 
 .box {
     margin-left: 30px;

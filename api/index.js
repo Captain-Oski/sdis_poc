@@ -53,7 +53,7 @@ app.get('/pop_data', (req, res) => {
         SELECT 
             round(SUM(pop2021_id)) as total_population,
             (SUM(pop2021_id) * 100.0 / (SELECT SUM(pop2021_id) FROM sdis.sdis_results
-            WHERE 1=1 ${filterClauses[0]};
+            WHERE 1=1 ${filterClauses[0]}
             )) AS percentage_of_total_population,
             COUNT(*) AS total_entries_with_indice_emv_gte_4
         FROM sdis.sdis_results
