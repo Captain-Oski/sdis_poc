@@ -28,7 +28,7 @@ map.on("load", (e) => {
         // "filter": ['>=', ['get', 'indice_emv'], 4],
         "paint": {
           "fill-outline-color": "transparent",
-            "fill-color": 
+          "fill-color": 
             {
               'property': 'indice_emv',
               'stops': [
@@ -40,25 +40,7 @@ map.on("load", (e) => {
                 [5, '#3b738f'],
                 [6, '#2a5674']
               ]
-              //#d1eeea,#a8dbd9,#85c4c9,#68abb8,#4f90a6,#3b738f,#2a5674
             },
-
-            // TODO : Créer la fonction qui s'occupe d'ajouter et retirer les variables de l'équation et qui retire 1 à chaque fois
-            // -- filter.js updateVulnerabilities
-            //   ["step",
-            //   [
-            //     "+",
-            //     ["to-number", ["get","acp_sociale"]],
-            //     ["to-number", ["get", "acp_econo"]],
-            //     ["to-number", ["get", "cp_enviro"]],
-            //     ["to-number", ["get", "acp_securite"]],
-            //     ["to-number", ["get", "acp_proximite"]],
-            //     ["to-number", ["get", "acp_cultsportloisir"]]
-            //   ],
-            //   "#d1eeea",  // First color when the sum is less than 2
-            //   2, "#68abb8",  // Second color when the sum is between 2 and 3
-            //   3, "#2a5674"  // Third color when the sum is 3.99 or greater
-            // ],
                         
             "fill-opacity": 1
           },
@@ -82,17 +64,17 @@ map.on("load", (e) => {
             "fill-outline-color": "transparent",
             "fill-color": 
             {
-                'property': 'indice_emv',
-                'stops': [[0, '#d1eeea'], [6, '#2a5674']]
-            },
-            //////////////////////////////////////////
-            // "fill-color": [
-            //   "step",
-            //   ["to-number", ["get","indice_emv"]],
-            //   "#d1eeea",  // First color when the sum is less than 2
-            //   2, "#68abb8",  // Second color when the sum is between 2 and 3
-            //   4, "#2a5674"  // Third color when the sum is 3.99 or greater
-            // ],
+              'property': 'indice_emv',
+              'stops': [
+                [0, '#d1eeea'],
+                [1, '#d1eeea'], 
+                [2, '#d1eeea'], 
+                [3, '#68abb8'],
+                [4, '#4f90a6'],
+                [5, '#3b738f'],
+                [6, '#2a5674']
+              ]
+            },   
             "fill-opacity": 1
           },
           "layout": {
@@ -147,18 +129,18 @@ map.on("load", (e) => {
             .setLngLat(coordinates)
             .setHTML(description)
             .addTo(map);
-            });
+        });
                 
-            // Change the cursor to a pointer when the mouse is over the places layer.
-            map.on("mouseenter", layer, function () {
-            map.getCanvas().style.cursor = "pointer";
-            });
-    
-            
-            // Change it back to a pointer when it leaves.
-            map.on("mouseleave",layer, function () {
-            map.getCanvas().style.cursor = "";
-            });
+        // Change the cursor to a pointer when the mouse is over the places layer.
+        map.on("mouseenter", layer, function () {
+        map.getCanvas().style.cursor = "pointer";
+        });
+
+        
+        // Change it back to a pointer when it leaves.
+        map.on("mouseleave",layer, function () {
+        map.getCanvas().style.cursor = "";
+        });
     }) 
    
     // read the filters after is loaded
@@ -182,6 +164,7 @@ function toggleLayerVisibility(layerId) {
       }
     }
   }
+  
 async function fetchPopData() {
   const arr = MapFiltersStore.getFilter('nom') ? MapFiltersStore.getFilter('nom') : null
   try {

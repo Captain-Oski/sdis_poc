@@ -2,18 +2,18 @@ const express = require('express');
 const { Pool } = require('pg');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000; // Use environment variable or default port
 
-// Configurations de la base de données
+// Database configuration
 const pool = new Pool({
     user: process.env.DB_USER,
-    host: process.env.DB_HOST, // Utilisez la variable d'environnement pour le nom d'hôte
+    host: process.env.DB_HOST,
     database: process.env.DB_NAME,
     password: process.env.DB_PASSWORD,
-    port: 5432, // Port de la base de données PostgreSQL
+    port: process.env.DB_PORT || 5432, // Use environment variable or default PostgreSQL port
 });
 
-// Middleware CORS
+// Middleware: Enable CORS
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
@@ -21,24 +21,27 @@ app.use(function(req, res, next) {
     next();
 });
 
-// Helper function to generate the filter clause based on the provided array parameter
-function getFilterClause(arrValues, method) {
+/**
+ * Generate filter clauses for SQL query.
+ * @param {Array} arrValues - Array of values for filtering.
+ * @param {boolean} method - Filter method.
+ * @returns {Array} An array of two filter clauses.
+ */
+function getFilterClauses(arrValues, method) {
     if (!arrValues && !method) return ['', ''];
 
     const placeholders = arrValues.map((_, index) => `$${index + 1}`);
 
     if (method) {
-        // If method is provided, use null as the first parameter
         return [` AND nom IN (${placeholders.join(', ')})`, ''];
     } else if (arrValues) {
-        // If arr is provided, use regular filter with nom values
         return ['', ` AND nom IN (${placeholders.join(', ')})`];
     }
 
     return ['', ''];
 }
 
-// Route pour interroger les données
+// Route to query population data
 app.get('/pop_data', (req, res) => {
     const arr = req.query.arr;
     const method = req.query.method;
@@ -47,31 +50,29 @@ app.get('/pop_data', (req, res) => {
         var arrValues = arr.split(',');
     }
 
-    const filterClauses = getFilterClause(arrValues, method);
+    const [filterClause1, filterClause2] = getFilterClauses(arrValues, method);
 
-    let query = `
+    const query = `
         SELECT 
             round(SUM(pop2021_id)) as total_population,
             (SUM(pop2021_id) * 100.0 / (SELECT SUM(pop2021_id) FROM sdis.sdis_results
-            WHERE 1=1 ${filterClauses[0]}
+            WHERE 1=1 ${filterClause1}
             )) AS percentage_of_total_population,
             COUNT(*) AS total_entries_with_indice_emv_gte_4
         FROM sdis.sdis_results
-        WHERE indice_emv >= 4.0 ${filterClauses[1]}
+        WHERE indice_emv >= 4.0 ${filterClause2}
     `;
 
-    // Execute the query
     pool.query(query, arrValues, (err, result) => {
         if (err) {
-            console.error('Erreur lors de l\'interrogation de la base de données', err);
-            return res.status(500).json({ error: 'Erreur lors de l\'interrogation de la base de données' });
+            console.error('Error querying the database', err);
+            return res.status(500).json({ error: 'Error querying the database' });
         }
-        // Renvoyer les données en format JSON
-        console.log(result.rows)
         res.json(result.rows);
     });
 });
 
+// Route to query index percentage data
 app.get('/index_pct', (req, res) => {
     const arr = req.query.arr;
     const index = req.query.index;
@@ -97,32 +98,25 @@ app.get('/index_pct', (req, res) => {
         const placeholders = arrValues.map((_, index) => `$${index + 1}`);
         query += ` AND nom IN (${placeholders.join(', ')});`;
 
-        console.log(query)
-        // Execute the query with the array values as parameters
         pool.query(query, arrValues, (err, result) => {
             if (err) {
-                console.error('Erreur lors de l\'interrogation de la base de données', err);
-                return res.status(500).json({ error: 'Erreur lors de l\'interrogation de la base de données' });
+                console.error('Error querying the database', err);
+                return res.status(500).json({ error: 'Error querying the database' });
             }
-            // Renvoyer les données en format JSON
             res.json(result.rows);
         });
-
     } else {
-        // Execute the query without parameters
         pool.query(query, (err, result) => {
             if (err) {
-                console.error('Erreur lors de l\'interrogation de la base de données', err);
-                return res.status(500).json({ error: 'Erreur lors de l\'interrogation de la base de données' });
+                console.error('Error querying the database', err);
+                return res.status(500).json({ error: 'Error querying the database' });
             }
-            // Renvoyer les données en format JSON
-            console.log(result.rows)
             res.json(result.rows);
         });
     }
 });
 
-// Démarrer le serveur
+// Start the server
 app.listen(port, () => {
-    console.log(`Serveur en cours d'exécution sur http://${process.env.DB_HOST}:${port}`);
+    console.log(`Server is running on http://localhost:${port}`);
 });
