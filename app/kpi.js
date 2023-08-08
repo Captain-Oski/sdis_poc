@@ -1,4 +1,5 @@
-  const api= `https://bug-free-eureka-q574rw9r67hxpw9-3000.app.github.dev`
+  const api= `${gatewayIP}:3000`
+  // const api= `https://bug-free-eureka-q574rw9r67hxpw9-3000.app.github.dev`
 
   async function getIndexPct (arr,index) {
     let apiUrl = `${api}/index_pct`;

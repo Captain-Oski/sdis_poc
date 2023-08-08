@@ -1,3 +1,6 @@
+const gatewayIP = 'http://localhost';
+console.log(`Gateway IP: ${gatewayIP}`);
+
 var map = new maplibregl.Map({
     container: "map",
     center: [ -73.64666056819226, 45.52627413546361],
@@ -17,7 +20,7 @@ map.on("load", (e) => {
 
     map.addSource("hex_source", {
         "type": "vector",
-        "tiles": ["https://bug-free-eureka-q574rw9r67hxpw9-8801.app.github.dev/sdis.sdis_results/{z}/{x}/{y}.pbf"]
+        "tiles": [`${gatewayIP}:8801/sdis.sdis_results/{z}/{x}/{y}.pbf`]
     });
 
     map.addLayer({
@@ -52,7 +55,7 @@ map.on("load", (e) => {
 
     map.addSource("da_source", {
         "type": "vector",
-        "tiles": ["https://bug-free-eureka-q574rw9r67hxpw9-8801.app.github.dev/sdis.indice_emv_data_da/{z}/{x}/{y}.pbf"]
+        "tiles": [`${gatewayIP}:8801/sdis./sdis.indice_emv_data_da/{z}/{x}/{y}.pbf`]
     });
 
     map.addLayer({
